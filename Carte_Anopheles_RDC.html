@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cf0c36adda209e8b668cc6fd8f9140ff {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="
+    position: fixed; 
+    top: 15px; left: 50%; 
+    transform: translateX(-50%);
+    width: 80%; max-width: 850px;
+    z-index:9999; 
+    background-color: rgba(255, 255, 255, 0.95);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border: 1px solid #E2E8F0;
+    text-align: center;
+    pointer-events: none;
+    ">
+    <h1 style="font-size: 16px; margin: 0; color: #1A202C; font-weight: 700; letter-spacing: 0.5px;">
+        SITES SENTINELLES INRB - DÉPARTEMENT D'ÉCOLOGIE VECTORIELLE ET ENVIRONNEMENT "ECOVEN"
+    </h1>
+</div>
+    
+            <div class="folium-map" id="map_cf0c36adda209e8b668cc6fd8f9140ff" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cf0c36adda209e8b668cc6fd8f9140ff = L.map(
+                "map_cf0c36adda209e8b668cc6fd8f9140ff",
+                {
+                    center: [-3.0, 23.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5.5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3f2f59f1d0bc5d222be05c5f041e50b1 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u0026copy; OpenStreetMap contributors \u0026copy; CARTO",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3f2f59f1d0bc5d222be05c5f041e50b1.addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        function geo_json_83f66450bdaad0fbd6246bd386a6c7a6_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1A365D", "fillColor": "transparent", "opacity": 0.85, "weight": 3.5};
+            }
+        }
+
+        function geo_json_83f66450bdaad0fbd6246bd386a6c7a6_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_83f66450bdaad0fbd6246bd386a6c7a6 = L.geoJson(null, {
+                onEachFeature: geo_json_83f66450bdaad0fbd6246bd386a6c7a6_onEachFeature,
+            
+                style: geo_json_83f66450bdaad0fbd6246bd386a6c7a6_styler,
+            ...{
+}
+        });
+
+        function geo_json_83f66450bdaad0fbd6246bd386a6c7a6_add (data) {
+            geo_json_83f66450bdaad0fbd6246bd386a6c7a6
+                .addData(data);
+        }
+            geo_json_83f66450bdaad0fbd6246bd386a6c7a6_add({"features": [{"geometry": {"coordinates": [[[30.83386, 3.509166], [30.773347, 2.339883], [31.174149, 2.204465], [30.85267, 1.849396], [30.468508, 1.583805], [30.086154, 1.062313], [29.875779, 0.59738], [29.819503, -0.20531], [29.587838, -0.587406], [29.579466, -1.341313], [29.291887, -1.620056], [29.254835, -2.21511], [29.117479, -2.292211], [29.024926, -2.839258], [29.276384, -3.293907], [29.339998, -4.499983], [29.519987, -5.419979], [29.419993, -5.939999], [29.620032, -6.520015], [30.199997, -7.079981], [30.740015, -8.340007], [30.346086, -8.238257], [29.002912, -8.407032], [28.734867, -8.526559], [28.449871, -9.164918], [28.673682, -9.605925], [28.49607, -10.789884], [28.372253, -11.793647], [28.642417, -11.971569], [29.341548, -12.360744], [29.616001, -12.178895], [29.699614, -13.257227], [28.934286, -13.248958], [28.523562, -12.698604], [28.155109, -12.272481], [27.388799, -12.132747], [27.16442, -11.608748], [26.553088, -11.92444], [25.75231, -11.784965], [25.418118, -11.330936], [24.78317, -11.238694], [24.314516, -11.262826], [24.257155, -10.951993], [23.912215, -10.926826], [23.456791, -10.867863], [22.837345, -11.017622], [22.402798, -10.993075], [22.155268, -11.084801], [22.208753, -9.894796], [21.875182, -9.523708], [21.801801, -8.908707], [21.949131, -8.305901], [21.746456, -7.920085], [21.728111, -7.290872], [20.514748, -7.299606], [20.601823, -6.939318], [20.091622, -6.94309], [20.037723, -7.116361], [19.417502, -7.155429], [19.166613, -7.738184], [19.016752, -7.988246], [18.464176, -7.847014], [18.134222, -7.987678], [17.47297, -8.068551], [17.089996, -7.545689], [16.860191, -7.222298], [16.57318, -6.622645], [16.326528, -5.87747], [13.375597, -5.864241], [13.024869, -5.984389], [12.735171, -5.965682], [12.322432, -6.100092], [12.182337, -5.789931], [12.436688, -5.684304], [12.468004, -5.248362], [12.631612, -4.991271], [12.995517, -4.781103], [13.25824, -4.882957], [13.600235, -4.500138], [14.144956, -4.510009], [14.209035, -4.793092], [14.582604, -4.970239], [15.170992, -4.343507], [15.75354, -3.855165], [16.00629, -3.535133], [15.972803, -2.712392], [16.407092, -1.740927], [16.865307, -1.225816], [17.523716, -0.74383], [17.638645, -0.424832], [17.663553, -0.058084], [17.82654, 0.288923], [17.774192, 0.855659], [17.898835, 1.741832], [18.094276, 2.365722], [18.393792, 2.900443], [18.453065, 3.504386], [18.542982, 4.201785], [18.932312, 4.709506], [19.467784, 5.031528], [20.290679, 4.691678], [20.927591, 4.322786], [21.659123, 4.224342], [22.405124, 4.02916], [22.704124, 4.633051], [22.84148, 4.710126], [23.297214, 4.609693], [24.410531, 5.108784], [24.805029, 4.897247], [25.128833, 4.927245], [25.278798, 5.170408], [25.650455, 5.256088], [26.402761, 5.150875], [27.044065, 5.127853], [27.374226, 5.233944], [27.979977, 4.408413], [28.428994, 4.287155], [28.696678, 4.455077], [29.159078, 4.389267], [29.715995, 4.600805], [29.9535, 4.173699], [30.83386, 3.509166]]], "type": "Polygon"}, "id": "COD", "properties": {"name": "Democratic Republic of the Congo"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_83f66450bdaad0fbd6246bd386a6c7a6.addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+            var circle_marker_26f2661a2417ab118e0ae22f7c07d28f = L.circleMarker(
+                [-2.565, 26.618],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_e1c221d3ccafedd2a141f9203242a129 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_3b8dec9379116c85b42d76c3d9eea048 = $(`<div id="html_3b8dec9379116c85b42d76c3d9eea048" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KALIMA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">563</td>                 <td style="padding: 4px;">361</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">16</td>                 <td style="padding: 4px;">8</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">4</td>                 <td style="padding: 4px;">3</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>955</span></p></div></div>`)[0];
+                popup_e1c221d3ccafedd2a141f9203242a129.setContent(html_3b8dec9379116c85b42d76c3d9eea048);
+            
+        
+
+        circle_marker_26f2661a2417ab118e0ae22f7c07d28f.bindPopup(popup_e1c221d3ccafedd2a141f9203242a129)
+        ;
+
+        
+    
+    
+            circle_marker_26f2661a2417ab118e0ae22f7c07d28f.bindTooltip(
+                `<div>
+                     <b>Site:</b> KALIMA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_da1e501951f573d6e7b1d7d1a681cf13 = L.circleMarker(
+                [-5.5619, 14.4461],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_5806472d1f6c6040344be43ca2ca5111 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_6ac80794724a658a6f1d4a2ecc111303 = $(`<div id="html_6ac80794724a658a6f1d4a2ecc111303" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KIMPESE</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">169</td>                 <td style="padding: 4px;">105</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">64</td>                 <td style="padding: 4px;">63</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">1</td>                 <td style="padding: 4px;">3</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>405</span></p></div></div>`)[0];
+                popup_5806472d1f6c6040344be43ca2ca5111.setContent(html_6ac80794724a658a6f1d4a2ecc111303);
+            
+        
+
+        circle_marker_da1e501951f573d6e7b1d7d1a681cf13.bindPopup(popup_5806472d1f6c6040344be43ca2ca5111)
+        ;
+
+        
+    
+    
+            circle_marker_da1e501951f573d6e7b1d7d1a681cf13.bindTooltip(
+                `<div>
+                     <b>Site:</b> KIMPESE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ac0fc452ef46270ec80b83269a15528d = L.circleMarker(
+                [-4.85, 21.5667],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_6b6cc3cb09c1229a0a73d7fdce748697 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_0757e543ca3ca2bcb7992af8fad22b65 = $(`<div id="html_0757e543ca3ca2bcb7992af8fad22b65" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">MWEKA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">376</td>                 <td style="padding: 4px;">503</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>879</span></p></div></div>`)[0];
+                popup_6b6cc3cb09c1229a0a73d7fdce748697.setContent(html_0757e543ca3ca2bcb7992af8fad22b65);
+            
+        
+
+        circle_marker_ac0fc452ef46270ec80b83269a15528d.bindPopup(popup_6b6cc3cb09c1229a0a73d7fdce748697)
+        ;
+
+        
+    
+    
+            circle_marker_ac0fc452ef46270ec80b83269a15528d.bindTooltip(
+                `<div>
+                     <b>Site:</b> MWEKA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9f59c496b9b97875ebde47391aca6193 = L.circleMarker(
+                [-4.41873, 18.42959],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_149c62c59cce5d7f05ec49150df3a291 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_813ff490992bfb05bcbc2806a84c120a = $(`<div id="html_813ff490992bfb05bcbc2806a84c120a" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">VANGA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">263</td>                 <td style="padding: 4px;">358</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">11</td>                 <td style="padding: 4px;">21</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>653</span></p></div></div>`)[0];
+                popup_149c62c59cce5d7f05ec49150df3a291.setContent(html_813ff490992bfb05bcbc2806a84c120a);
+            
+        
+
+        circle_marker_9f59c496b9b97875ebde47391aca6193.bindPopup(popup_149c62c59cce5d7f05ec49150df3a291)
+        ;
+
+        
+    
+    
+            circle_marker_9f59c496b9b97875ebde47391aca6193.bindTooltip(
+                `<div>
+                     <b>Site:</b> VANGA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d46a9a168439e0f57f66b04a34bef2ec = L.circleMarker(
+                [3.5242, 23.5995],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_86281122adbc65a1d4043f40d6d5b0e1 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_22c64f320943beeb99610ed5cad95ec8 = $(`<div id="html_22c64f320943beeb99610ed5cad95ec8" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">LODJA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">233</td>                 <td style="padding: 4px;">205</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">1</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>439</span></p></div></div>`)[0];
+                popup_86281122adbc65a1d4043f40d6d5b0e1.setContent(html_22c64f320943beeb99610ed5cad95ec8);
+            
+        
+
+        circle_marker_d46a9a168439e0f57f66b04a34bef2ec.bindPopup(popup_86281122adbc65a1d4043f40d6d5b0e1)
+        ;
+
+        
+    
+    
+            circle_marker_d46a9a168439e0f57f66b04a34bef2ec.bindTooltip(
+                `<div>
+                     <b>Site:</b> LODJA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aa33c286fc703fd9140593cd462dc0e2 = L.circleMarker(
+                [0.525, 25.216],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_d008cb9c714f4f1bcba9de3981b3ebd3 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_cdf8fb546ca116b095a944274b433e9d = $(`<div id="html_cdf8fb546ca116b095a944274b433e9d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KABONDO</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">154</td>                 <td style="padding: 4px;">71</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">6</td>                 <td style="padding: 4px;">7</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">2</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">1</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>241</span></p></div></div>`)[0];
+                popup_d008cb9c714f4f1bcba9de3981b3ebd3.setContent(html_cdf8fb546ca116b095a944274b433e9d);
+            
+        
+
+        circle_marker_aa33c286fc703fd9140593cd462dc0e2.bindPopup(popup_d008cb9c714f4f1bcba9de3981b3ebd3)
+        ;
+
+        
+    
+    
+            circle_marker_aa33c286fc703fd9140593cd462dc0e2.bindTooltip(
+                `<div>
+                     <b>Site:</b> KABONDO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8869da0084fe136eb4e64f93f13f1cd4 = L.circleMarker(
+                [-6.02264, 22.31945],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_76a4b689417c1a054564936e22ff9323 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_6c78599dd4322b9331106e628ae881b0 = $(`<div id="html_6c78599dd4322b9331106e628ae881b0" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">MIKALAYI</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">87</td>                 <td style="padding: 4px;">74</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">137</td>                 <td style="padding: 4px;">103</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">9</td>                 <td style="padding: 4px;">5</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>415</span></p></div></div>`)[0];
+                popup_76a4b689417c1a054564936e22ff9323.setContent(html_6c78599dd4322b9331106e628ae881b0);
+            
+        
+
+        circle_marker_8869da0084fe136eb4e64f93f13f1cd4.bindPopup(popup_76a4b689417c1a054564936e22ff9323)
+        ;
+
+        
+    
+    
+            circle_marker_8869da0084fe136eb4e64f93f13f1cd4.bindTooltip(
+                `<div>
+                     <b>Site:</b> MIKALAYI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9d8883bf2bcf08a98f355833e7e1112a = L.circleMarker(
+                [2.1623, 21.5115],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_505cbd27257cd75261f93938f14e54ed = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_b8dbbd57fd4331b437ecde5cbbeb9da5 = $(`<div id="html_b8dbbd57fd4331b437ecde5cbbeb9da5" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">LISALA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">161</td>                 <td style="padding: 4px;">121</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">1</td>                 <td style="padding: 4px;">1</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>284</span></p></div></div>`)[0];
+                popup_505cbd27257cd75261f93938f14e54ed.setContent(html_b8dbbd57fd4331b437ecde5cbbeb9da5);
+            
+        
+
+        circle_marker_9d8883bf2bcf08a98f355833e7e1112a.bindPopup(popup_505cbd27257cd75261f93938f14e54ed)
+        ;
+
+        
+    
+    
+            circle_marker_9d8883bf2bcf08a98f355833e7e1112a.bindTooltip(
+                `<div>
+                     <b>Site:</b> LISALA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_305cf221fbe05f94fd6f55b40bf0b3ca = L.circleMarker(
+                [-0.28163, 20.88053],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_610fd86cc95df23b1a198f7a6d9c96ba = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_3ee5246daf3e9801b25b71fc4daf6b95 = $(`<div id="html_3ee5246daf3e9801b25b71fc4daf6b95" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">BOENDE</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">356</td>                 <td style="padding: 4px;">266</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">11</td>                 <td style="padding: 4px;">12</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">6</td>                 <td style="padding: 4px;">11</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>662</span></p></div></div>`)[0];
+                popup_610fd86cc95df23b1a198f7a6d9c96ba.setContent(html_3ee5246daf3e9801b25b71fc4daf6b95);
+            
+        
+
+        circle_marker_305cf221fbe05f94fd6f55b40bf0b3ca.bindPopup(popup_610fd86cc95df23b1a198f7a6d9c96ba)
+        ;
+
+        
+    
+    
+            circle_marker_305cf221fbe05f94fd6f55b40bf0b3ca.bindTooltip(
+                `<div>
+                     <b>Site:</b> BOENDE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_86cc9655257ce4b5b42dabd6a72a1357 = L.circleMarker(
+                [-0.05, 19.167],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_6d40c2b4c1f4958caebe4560db1b9c59 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_179dd2f0ce7f67e4453f0e38de0127f4 = $(`<div id="html_179dd2f0ce7f67e4453f0e38de0127f4" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">BOLENGE</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">57</td>                 <td style="padding: 4px;">69</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">4</td>                 <td style="padding: 4px;">6</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>136</span></p></div></div>`)[0];
+                popup_6d40c2b4c1f4958caebe4560db1b9c59.setContent(html_179dd2f0ce7f67e4453f0e38de0127f4);
+            
+        
+
+        circle_marker_86cc9655257ce4b5b42dabd6a72a1357.bindPopup(popup_6d40c2b4c1f4958caebe4560db1b9c59)
+        ;
+
+        
+    
+    
+            circle_marker_86cc9655257ce4b5b42dabd6a72a1357.bindTooltip(
+                `<div>
+                     <b>Site:</b> BOLENGE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c9d15183ea6b416ebe983b3098282b18 = L.circleMarker(
+                [-10.6167, 26.3],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_7930d5293e741217dffa2b9e5aff289c = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_115b5eb7769cb96b2e8518cf8f9e8e8e = $(`<div id="html_115b5eb7769cb96b2e8518cf8f9e8e8e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">FUNGURUME</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">147</td>                 <td style="padding: 4px;">153</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">10</td>                 <td style="padding: 4px;">13</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>323</span></p></div></div>`)[0];
+                popup_7930d5293e741217dffa2b9e5aff289c.setContent(html_115b5eb7769cb96b2e8518cf8f9e8e8e);
+            
+        
+
+        circle_marker_c9d15183ea6b416ebe983b3098282b18.bindPopup(popup_7930d5293e741217dffa2b9e5aff289c)
+        ;
+
+        
+    
+    
+            circle_marker_c9d15183ea6b416ebe983b3098282b18.bindTooltip(
+                `<div>
+                     <b>Site:</b> FUNGURUME
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cea73479224d06d63a843af3e5aea7e2 = L.circleMarker(
+                [-7.0091, 23.4528],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_7e70a79ea727ac283eec034a74137de8 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_4271b782ee801a3b22a46cb5dd856407 = $(`<div id="html_4271b782ee801a3b22a46cb5dd856407" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">MWENEDITU</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">136</td>                 <td style="padding: 4px;">254</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">66</td>                 <td style="padding: 4px;">97</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">1</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>554</span></p></div></div>`)[0];
+                popup_7e70a79ea727ac283eec034a74137de8.setContent(html_4271b782ee801a3b22a46cb5dd856407);
+            
+        
+
+        circle_marker_cea73479224d06d63a843af3e5aea7e2.bindPopup(popup_7e70a79ea727ac283eec034a74137de8)
+        ;
+
+        
+    
+    
+            circle_marker_cea73479224d06d63a843af3e5aea7e2.bindTooltip(
+                `<div>
+                     <b>Site:</b> MWENEDITU
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_44fe893cb288f67b9a831d0c8bc7c2d0 = L.circleMarker(
+                [-1.9523, 18.2864],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_564dce1e7f0f37d3614533bdea8fa037 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_291c123aaa4a88f472858e187ad3dd27 = $(`<div id="html_291c123aaa4a88f472858e187ad3dd27" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">INONGO</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">181</td>                 <td style="padding: 4px;">194</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">30</td>                 <td style="padding: 4px;">71</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">351</td>                 <td style="padding: 4px;">489</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>1316</span></p></div></div>`)[0];
+                popup_564dce1e7f0f37d3614533bdea8fa037.setContent(html_291c123aaa4a88f472858e187ad3dd27);
+            
+        
+
+        circle_marker_44fe893cb288f67b9a831d0c8bc7c2d0.bindPopup(popup_564dce1e7f0f37d3614533bdea8fa037)
+        ;
+
+        
+    
+    
+            circle_marker_44fe893cb288f67b9a831d0c8bc7c2d0.bindTooltip(
+                `<div>
+                     <b>Site:</b> INONGO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cdbcd2980174fb1668e8add387f7150b = L.circleMarker(
+                [2.11667, 29.6333],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_ca60a660546104c06e878e227d599f3d = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_5e76cf737a7ee392f5a7e955d49dca6a = $(`<div id="html_5e76cf737a7ee392f5a7e955d49dca6a" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">PAWA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">215</td>                 <td style="padding: 4px;">110</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">62</td>                 <td style="padding: 4px;">14</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">87</td>                 <td style="padding: 4px;">128</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">5</td>                 <td style="padding: 4px;">3</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>624</span></p></div></div>`)[0];
+                popup_ca60a660546104c06e878e227d599f3d.setContent(html_5e76cf737a7ee392f5a7e955d49dca6a);
+            
+        
+
+        circle_marker_cdbcd2980174fb1668e8add387f7150b.bindPopup(popup_ca60a660546104c06e878e227d599f3d)
+        ;
+
+        
+    
+    
+            circle_marker_cdbcd2980174fb1668e8add387f7150b.bindTooltip(
+                `<div>
+                     <b>Site:</b> PAWA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_809396cc34a10726dad9c336f9035985 = L.circleMarker(
+                [3.2565, 19.7723],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_739827cc1b43b9cb925aaea7b7f5b864 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_0d0fb04652afee144b219b7c5474e051 = $(`<div id="html_0d0fb04652afee144b219b7c5474e051" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">GEMENA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">53</td>                 <td style="padding: 4px;">119</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">6</td>                 <td style="padding: 4px;">5</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">1</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>184</span></p></div></div>`)[0];
+                popup_739827cc1b43b9cb925aaea7b7f5b864.setContent(html_0d0fb04652afee144b219b7c5474e051);
+            
+        
+
+        circle_marker_809396cc34a10726dad9c336f9035985.bindPopup(popup_739827cc1b43b9cb925aaea7b7f5b864)
+        ;
+
+        
+    
+    
+            circle_marker_809396cc34a10726dad9c336f9035985.bindTooltip(
+                `<div>
+                     <b>Site:</b> GEMENA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2fb90163a796671a0ac5ad621c0e5c1c = L.circleMarker(
+                [-8.7352, 25.0032],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_b5589d0f5fc0f02574641bdb4d6949f2 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_3e098f508d858b33011d79b132b16526 = $(`<div id="html_3e098f508d858b33011d79b132b16526" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KAMINA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">458</td>                 <td style="padding: 4px;">642</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">35</td>                 <td style="padding: 4px;">71</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>1206</span></p></div></div>`)[0];
+                popup_b5589d0f5fc0f02574641bdb4d6949f2.setContent(html_3e098f508d858b33011d79b132b16526);
+            
+        
+
+        circle_marker_2fb90163a796671a0ac5ad621c0e5c1c.bindPopup(popup_b5589d0f5fc0f02574641bdb4d6949f2)
+        ;
+
+        
+    
+    
+            circle_marker_2fb90163a796671a0ac5ad621c0e5c1c.bindTooltip(
+                `<div>
+                     <b>Site:</b> KAMINA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8bd462ea7387dd284439bc24e1ba9fc4 = L.circleMarker(
+                [-11.04934, 26.95607],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_4c8ae1a21bfff3cf7e55b04e0f9192b2 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_48f0953a6f1a752b9aa9e7a83a6230bc = $(`<div id="html_48f0953a6f1a752b9aa9e7a83a6230bc" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KAPOLOWE</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">21</td>                 <td style="padding: 4px;">15</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">293</td>                 <td style="padding: 4px;">133</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>462</span></p></div></div>`)[0];
+                popup_4c8ae1a21bfff3cf7e55b04e0f9192b2.setContent(html_48f0953a6f1a752b9aa9e7a83a6230bc);
+            
+        
+
+        circle_marker_8bd462ea7387dd284439bc24e1ba9fc4.bindPopup(popup_4c8ae1a21bfff3cf7e55b04e0f9192b2)
+        ;
+
+        
+    
+    
+            circle_marker_8bd462ea7387dd284439bc24e1ba9fc4.bindTooltip(
+                `<div>
+                     <b>Site:</b> KAPOLOWE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8b1f232c82d93e5d673be55594a99dec = L.circleMarker(
+                [-6.11346, 23.65142],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_607b96e2687add4f8a51a5aca0d55c80 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_c98722c11829f470aa79beb5de312927 = $(`<div id="html_c98722c11829f470aa79beb5de312927" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">DIBINDI</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">7</td>                 <td style="padding: 4px;">13</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">50</td>                 <td style="padding: 4px;">69</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>139</span></p></div></div>`)[0];
+                popup_607b96e2687add4f8a51a5aca0d55c80.setContent(html_c98722c11829f470aa79beb5de312927);
+            
+        
+
+        circle_marker_8b1f232c82d93e5d673be55594a99dec.bindPopup(popup_607b96e2687add4f8a51a5aca0d55c80)
+        ;
+
+        
+    
+    
+            circle_marker_8b1f232c82d93e5d673be55594a99dec.bindTooltip(
+                `<div>
+                     <b>Site:</b> DIBINDI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a8c40756302150e5c1596ee223d94c2e = L.circleMarker(
+                [2.7933, 24.7287],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_78a6c8449b5822894ce6f29cf45372c2 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_7dab7a5de134d6ec232b36b6f447c299 = $(`<div id="html_7dab7a5de134d6ec232b36b6f447c299" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">BUTA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">83</td>                 <td style="padding: 4px;">127</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">12</td>                 <td style="padding: 4px;">15</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">3</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>240</span></p></div></div>`)[0];
+                popup_78a6c8449b5822894ce6f29cf45372c2.setContent(html_7dab7a5de134d6ec232b36b6f447c299);
+            
+        
+
+        circle_marker_a8c40756302150e5c1596ee223d94c2e.bindPopup(popup_78a6c8449b5822894ce6f29cf45372c2)
+        ;
+
+        
+    
+    
+            circle_marker_a8c40756302150e5c1596ee223d94c2e.bindTooltip(
+                `<div>
+                     <b>Site:</b> BUTA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d4991cc6b64b877d4c60509e0abb4346 = L.circleMarker(
+                [-2.22109, 28.83077],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_3f8b5676dd82fc3df92f75c5722b867d = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_eaac2ca32a8704d20deb57e2e0b4cdcb = $(`<div id="html_eaac2ca32a8704d20deb57e2e0b4cdcb" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KATANA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">211</td>                 <td style="padding: 4px;">181</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">63</td>                 <td style="padding: 4px;">47</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">2</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">17</td>                 <td style="padding: 4px;">12</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>533</span></p></div></div>`)[0];
+                popup_3f8b5676dd82fc3df92f75c5722b867d.setContent(html_eaac2ca32a8704d20deb57e2e0b4cdcb);
+            
+        
+
+        circle_marker_d4991cc6b64b877d4c60509e0abb4346.bindPopup(popup_3f8b5676dd82fc3df92f75c5722b867d)
+        ;
+
+        
+    
+    
+            circle_marker_d4991cc6b64b877d4c60509e0abb4346.bindTooltip(
+                `<div>
+                     <b>Site:</b> KATANA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3ba30d929fe2cc7b6e33c838ab8d0f57 = L.circleMarker(
+                [-5.9333, 29.2],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_9acdd0c41fae717fcb98dff77fa55051 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_f24a073c59f810da10f549253e4744e3 = $(`<div id="html_f24a073c59f810da10f549253e4744e3" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KALEMIE</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">451</td>                 <td style="padding: 4px;">320</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">48</td>                 <td style="padding: 4px;">52</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">2</td>                 <td style="padding: 4px;">1</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">3</td>                 <td style="padding: 4px;">2</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>879</span></p></div></div>`)[0];
+                popup_9acdd0c41fae717fcb98dff77fa55051.setContent(html_f24a073c59f810da10f549253e4744e3);
+            
+        
+
+        circle_marker_3ba30d929fe2cc7b6e33c838ab8d0f57.bindPopup(popup_9acdd0c41fae717fcb98dff77fa55051)
+        ;
+
+        
+    
+    
+            circle_marker_3ba30d929fe2cc7b6e33c838ab8d0f57.bindTooltip(
+                `<div>
+                     <b>Site:</b> KALEMIE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7e3a70ee523119f50b5f2cec0e600acf = L.circleMarker(
+                [-4.4067, 15.4095],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_38dfa777281a229c2a4fbd24c98f0092 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_5cf7e10f5db5fb99423d58a356d6e318 = $(`<div id="html_5cf7e10f5db5fb99423d58a356d6e318" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KINGASANI</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">152</td>                 <td style="padding: 4px;">89</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">23</td>                 <td style="padding: 4px;">18</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>282</span></p></div></div>`)[0];
+                popup_38dfa777281a229c2a4fbd24c98f0092.setContent(html_5cf7e10f5db5fb99423d58a356d6e318);
+            
+        
+
+        circle_marker_7e3a70ee523119f50b5f2cec0e600acf.bindPopup(popup_38dfa777281a229c2a4fbd24c98f0092)
+        ;
+
+        
+    
+    
+            circle_marker_7e3a70ee523119f50b5f2cec0e600acf.bindTooltip(
+                `<div>
+                     <b>Site:</b> KINGASANI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_710ca406406e36bf201ce71a0e3000f6 = L.circleMarker(
+                [3.33219, 20.30103],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_925dd0fe2d5d3acb513a89e097842699 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_719ed74f10f3a5cab47cb2bd58ff1131 = $(`<div id="html_719ed74f10f3a5cab47cb2bd58ff1131" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KARAWA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">1973</td>                 <td style="padding: 4px;">1957</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">162</td>                 <td style="padding: 4px;">212</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">1</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">206</td>                 <td style="padding: 4px;">202</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">157</td>                 <td style="padding: 4px;">204</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>5074</span></p></div></div>`)[0];
+                popup_925dd0fe2d5d3acb513a89e097842699.setContent(html_719ed74f10f3a5cab47cb2bd58ff1131);
+            
+        
+
+        circle_marker_710ca406406e36bf201ce71a0e3000f6.bindPopup(popup_925dd0fe2d5d3acb513a89e097842699)
+        ;
+
+        
+    
+    
+            circle_marker_710ca406406e36bf201ce71a0e3000f6.bindTooltip(
+                `<div>
+                     <b>Site:</b> KARAWA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9a6f955acc9f1bbc6f76034788b080c5 = L.circleMarker(
+                [-4.8667, 16.9833],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_2f96faa1096e501166b7350c9aa4bfc8 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_e69682f090faf4567ccf632772321c0d = $(`<div id="html_e69682f090faf4567ccf632772321c0d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KENGE</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">849</td>                 <td style="padding: 4px;">654</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">23</td>                 <td style="padding: 4px;">27</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">15</td>                 <td style="padding: 4px;">16</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>1584</span></p></div></div>`)[0];
+                popup_2f96faa1096e501166b7350c9aa4bfc8.setContent(html_e69682f090faf4567ccf632772321c0d);
+            
+        
+
+        circle_marker_9a6f955acc9f1bbc6f76034788b080c5.bindPopup(popup_2f96faa1096e501166b7350c9aa4bfc8)
+        ;
+
+        
+    
+    
+            circle_marker_9a6f955acc9f1bbc6f76034788b080c5.bindTooltip(
+                `<div>
+                     <b>Site:</b> KENGE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aa6c4cd357ea581ea8f5b3a31b37b6c0 = L.circleMarker(
+                [-6.10639, 23.55907],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_d9169e9cb9f207b03597fd1263e38c3f = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_884069296255a3858a6b950c14b954cf = $(`<div id="html_884069296255a3858a6b950c14b954cf" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">BIPEMBA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">57</td>                 <td style="padding: 4px;">57</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">64</td>                 <td style="padding: 4px;">65</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">1</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">8</td>                 <td style="padding: 4px;">9</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>261</span></p></div></div>`)[0];
+                popup_d9169e9cb9f207b03597fd1263e38c3f.setContent(html_884069296255a3858a6b950c14b954cf);
+            
+        
+
+        circle_marker_aa6c4cd357ea581ea8f5b3a31b37b6c0.bindPopup(popup_d9169e9cb9f207b03597fd1263e38c3f)
+        ;
+
+        
+    
+    
+            circle_marker_aa6c4cd357ea581ea8f5b3a31b37b6c0.bindTooltip(
+                `<div>
+                     <b>Site:</b> BIPEMBA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3dbc19101a6cf07b7a9e5e25711c0ab0 = L.circleMarker(
+                [-6.1135, 23.6514],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_a1e8b26e2ad65dfb85f0dfb7cbf9dee6 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_d2faeffeded67c4bc0f6fbc63050c3eb = $(`<div id="html_d2faeffeded67c4bc0f6fbc63050c3eb" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">DIBINDI</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">40</td>                 <td style="padding: 4px;">61</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">331</td>                 <td style="padding: 4px;">292</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>724</span></p></div></div>`)[0];
+                popup_a1e8b26e2ad65dfb85f0dfb7cbf9dee6.setContent(html_d2faeffeded67c4bc0f6fbc63050c3eb);
+            
+        
+
+        circle_marker_3dbc19101a6cf07b7a9e5e25711c0ab0.bindPopup(popup_a1e8b26e2ad65dfb85f0dfb7cbf9dee6)
+        ;
+
+        
+    
+    
+            circle_marker_3dbc19101a6cf07b7a9e5e25711c0ab0.bindTooltip(
+                `<div>
+                     <b>Site:</b> DIBINDI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_faed1ad0cc9341f6471e939cb2972d37 = L.circleMarker(
+                [-6.13083, 23.60639],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_e2327ad9679bda86702c34402b1a2c5c = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_6833d41339a04f17a5929d67ae8219bc = $(`<div id="html_6833d41339a04f17a5929d67ae8219bc" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KANSELE</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">287</td>                 <td style="padding: 4px;">94</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">1</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">1</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>383</span></p></div></div>`)[0];
+                popup_e2327ad9679bda86702c34402b1a2c5c.setContent(html_6833d41339a04f17a5929d67ae8219bc);
+            
+        
+
+        circle_marker_faed1ad0cc9341f6471e939cb2972d37.bindPopup(popup_e2327ad9679bda86702c34402b1a2c5c)
+        ;
+
+        
+    
+    
+            circle_marker_faed1ad0cc9341f6471e939cb2972d37.bindTooltip(
+                `<div>
+                     <b>Site:</b> KANSELE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d4866f5cea5567925eb3a94abeae6a9b = L.circleMarker(
+                [-4.322, 15.321],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_630374d50672438b63a391227d4ea445 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_a897e126006ce18f144cd0806b6f3ee6 = $(`<div id="html_a897e126006ce18f144cd0806b6f3ee6" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">KASANSA</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">115</td>                 <td style="padding: 4px;">121</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">457</td>                 <td style="padding: 4px;">523</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">2</td>                 <td style="padding: 4px;">1</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">3</td>                 <td style="padding: 4px;">14</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">6</td>                 <td style="padding: 4px;">25</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">1</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">1</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>1269</span></p></div></div>`)[0];
+                popup_630374d50672438b63a391227d4ea445.setContent(html_a897e126006ce18f144cd0806b6f3ee6);
+            
+        
+
+        circle_marker_d4866f5cea5567925eb3a94abeae6a9b.bindPopup(popup_630374d50672438b63a391227d4ea445)
+        ;
+
+        
+    
+    
+            circle_marker_d4866f5cea5567925eb3a94abeae6a9b.bindTooltip(
+                `<div>
+                     <b>Site:</b> KASANSA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1e266a944c9edb513829aabc940ee89f = L.circleMarker(
+                [-6.2215, 23.3925],
+                {"bubblingMouseEvents": true, "color": "#FFFFFF", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2980B9", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2.5}
+            ).addTo(map_cf0c36adda209e8b668cc6fd8f9140ff);
+        
+    
+        var popup_ff7ea45d14cd58b80354d26260063cd3 = L.popup({
+  "maxWidth": 450,
+});
+
+        
+            
+                var html_23b45e7a2f10aaa488c35bbd463a55b8 = $(`<div id="html_23b45e7a2f10aaa488c35bbd463a55b8" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; padding: 5px;">             <h4 style="margin: 0 0 10px 0; color: #2C3E50; border-bottom: 2px solid #3498db; padding-bottom: 5px;">MIABI</h4>             <table border="1" style="border-collapse:collapse; width:100%; text-align:center; border: 1px solid #BDC3C7;">             <tr style="background-color:#EBF5FB; color: #2C3E50; font-weight: bold;">                 <th style="padding: 5px;">Espèce</th>                 <th style="padding: 5px;">Int</th>                 <th style="padding: 5px;">Ext</th>             </tr>                      <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. gambiae sl</td>                 <td style="padding: 4px;">196</td>                 <td style="padding: 4px;">178</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. funestus grp</td>                 <td style="padding: 4px;">36</td>                 <td style="padding: 4px;">34</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. coustani</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. paludis</td>                 <td style="padding: 4px;">6</td>                 <td style="padding: 4px;">6</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. nili</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. moucheti</td>                 <td style="padding: 4px;">56</td>                 <td style="padding: 4px;">72</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. tenebrosus</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. hancocki</td>                 <td style="padding: 4px;">17</td>                 <td style="padding: 4px;">15</td>             </tr>                          <tr style="color: #34495E;">                 <td style="padding: 4px; text-align: left; font-style: italic;">An. salbaii</td>                 <td style="padding: 4px;">0</td>                 <td style="padding: 4px;">0</td>             </tr>             </table><p style='margin-top: 10px; font-weight: bold; color: #2C3E50;'>Total moustiques observés : <span style='color:#E74C3C;'>616</span></p></div></div>`)[0];
+                popup_ff7ea45d14cd58b80354d26260063cd3.setContent(html_23b45e7a2f10aaa488c35bbd463a55b8);
+            
+        
+
+        circle_marker_1e266a944c9edb513829aabc940ee89f.bindPopup(popup_ff7ea45d14cd58b80354d26260063cd3)
+        ;
+
+        
+    
+    
+            circle_marker_1e266a944c9edb513829aabc940ee89f.bindTooltip(
+                `<div>
+                     <b>Site:</b> MIABI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
