@@ -1,0 +1,3772 @@
+<!-- -----------------------------------------EN-TETE=========================================================--=====================>
+<!-- -----------------------------------------============================================================================================ ======-->
+ 
+<<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestion des programmes et maquettes de la Mention Physique et Technologie">
+    <title>Mention Physique et Technologie - Gestion & Maquettes</title>
+    
+    <!-- Icônes FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #0284c7;
+            --accent-light: #e0f2fe;
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #334155;
+            --text-dark: #0f172a;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* --- HEADER EN-TÊTE --- */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* --- MEMBRES DU BUREAU --- */
+        .bureau-section {
+            background: white;
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .bureau-title {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bureau-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .bureau-member {
+            background: var(--bg-main);
+            padding: 20px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .bureau-member:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .bureau-photo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+            border: 3px solid white;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            background-color: #cbd5e1;
+        }
+
+        .bureau-role {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .bureau-name {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* --- NOTE CREDITS --- */
+        .credit-note {
+            background-color: var(--accent-light);
+            color: #0369a1;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+/* --- STYLES DES ONGLETS (TABS) --- */
+        .tabs-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 20px;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-btn:hover {
+            color: var(--accent);
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            display: block;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background-color: white;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-bar:focus {
+            border-color: var(--accent);
+        }
+
+        /* --- STYLES ANNUAIRE PROFESSEURS --- */
+        .category-title {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin: 35px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+
+        .category-title.ordinaire { border-bottom-color: #0284c7; }
+        .category-title.professeur { border-bottom-color: #10b981; }
+        .category-title.associe { border-bottom-color: #f59e0b; }
+        .category-title.docteur { border-bottom-color: #64748b; }
+
+        .prof-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+
+        /* Nouvelle règle optionnelle si vous ajoutez aussi les photos dans les cartes profs de l'annuaire */
+        .prof-photo {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            background-color: #e2e8f0;
+        }
+
+        .prof-header {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .prof-name {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .prof-grade {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .badge-total-global {
+            background-color: var(--success);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .flex-header {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .charge-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        .charge-table th, .charge-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .charge-table th {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* --- STYLES DES TABLEAUX DE MAQUETTES --- */
+        .semester-title {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 12px 15px;
+            font-size: 1.2rem;
+            border-radius: 6px 6px 0 0;
+            margin-top: 25px;
+            font-weight: 600;
+        }
+
+        .program-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border-radius: 0 0 6px 6px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .program-table th, .program-table td {
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--border);
+            border-right: 1px solid #f1f5f9;
+        }
+
+        .program-table th {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .row-total {
+            background-color: #f8fafc !important;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+        
+        .row-total td {
+            border-top: 2px solid var(--border);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--primary);
+            color: #94a3b8;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<!-- -----------------------------------------CONTENUS DES ONGLETS =========================================================--=====================>
+<!-- -----------------------------------------============================================================================================ ======-->
+    <header>
+        <h1>Mention Physique & Technologie</h1>
+        <p>Faculté des Sciences et Technologie · Année Académique 2025-2026</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="bureau-section">
+            <div class="bureau-title">💼 Membres du Bureau de la Mention</div>
+            <div class="bureau-grid">
+                
+                <div class="bureau-member">
+                    <img src="kileba.jpg" alt="Professeur KILEBA MATONDO Didier" class="bureau-photo">
+                    <div class="bureau-role">Chef de la Mention</div>
+                    <div class="bureau-name">Professeur KILEBA MATONDO Didier</div>
+                </div>
+                
+                <div class="bureau-member">
+                    <img src="matindi.jpg" alt="PROF MATINDI BALEMBO Trésor" class="bureau-photo">
+                    <div class="bureau-role">Secrétaire chargé de l'Enseignement</div>
+                    <div class="bureau-name">PROF MATINDI BALEMBO Trésor</div>
+                </div>
+                
+                <div class="bureau-member">
+                    <img src="yombo.jpg" alt="PROF YOMBO PHAKA Rodriguez" class="bureau-photo">
+                    <div class="bureau-role">Secrétaire chargé de la Recherche</div>
+                    <div class="bureau-name">PROF YOMBO PHAKA Rodriguez</div>
+                </div>
+
+            </div>
+        </div>
+<!-- -----------------------------------------CONTENUS DES ONGLETS =========================================================--=====================>
+<!-- -----------------------------------------============================================================================================ ======-->
+        <div class="credit-note">
+            ℹ️ Configuration LMD : 1 crédit = 25 heures globales.
+        </div>
+        
+        <!-- MENU DES ONGLETS -->
+        <div class="tabs-menu">
+            <button class="tab-btn active" onclick="switchTab('annuaire')">👥 Professeurs & Charges</button>
+            <button class="tab-btn" onclick="switchTab('assistants')">🧑‍🏫 Assistants & Chef des Travaux</button>
+            <button class="tab-btn" onclick="switchTab('l1')">📜 Maquettes L1 (S1-S2)</button>
+            <button class="tab-btn" onclick="switchTab('l2')">📜 Maquettes L2 (S3-S4)</button>
+            <button class="tab-btn" onclick="switchTab('l3')">📜 Maquettes L3 (S5-S6)</button>
+        </div>
+
+<!-- -----------------------------------------ESPACE PROFESSEURS =========================================================--=====================>
+<!-- -----------------------------------------============================================================================================ ======-->
+<!-- ================================================================= -->
+<!-- ESPACE PROFESSEURS (ONGLET 1)                                     -->
+<!-- ================================================================= -->
+<div id="annuaire" class="tab-content active">
+    <h2 class="category-title">Professeurs &amp; Charges d'enseignement</h2>
+    <p>Espace réservé à l'annuaire des professeurs et à la gestion de leurs charges d'enseignement.</p>
+
+    <!-- 1. Grille des statistiques -->
+    <div class="stats-grid">
+        <div class="stat-card stat-total">
+            <span class="stat-number">30</span>
+            <span class="stat-label">Total Corps Académique</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Professeurs Émérites</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">5</span>
+            <span class="stat-label">Professeurs Ordinaires</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">11</span>
+            <span class="stat-label">Professeurs Full</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">10</span>
+            <span class="stat-label">Professeurs Associés</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Docteur</span>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 1 : PROFESSEURS ÉMÉRITES                                  -->
+    <!-- ================================================================= -->
+    <div class="category-section">
+        <h2 class="category-title">Professeurs Émérites</h2>
+        
+        <!-- BUTSANA bu-NIANGA -->
+        <div class="prof-card" data-search="butsana bu-nianga physique societe seminaire encadrement">
+            <div class="prof-header">
+                <div class="flex-header">
+                    <div>
+                        <div class="prof-name">BUTSANA bu-NIANGA</div>
+                        <div class="prof-matricule">Matricule : -</div>
+                        <span class="prof-grade" style="background:#fef2f2; color:#991b1b;">Professeur Émérite</span>
+                    </div>
+                    <div>
+                        <span class="badge-total-global">Total : 4 Crédits</span>
+                    </div>
+                </div>
+            </div>
+
+            <table class="charge-table">
+                <thead>
+                    <tr>
+                        <th>Cours dispensé(s)</th>
+                        <th>Année / Filière</th>
+                        <th>Crédits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Physique et Société</td>
+                        <td>L1 LMD Physique</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Séminaire</td>
+                        <td>M1 Physique (tous parcours)</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>TFE &amp; TFC (Encadrement)</td>
+                        <td>-</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr style="font-weight:bold; background:#f3f4f6;">
+                        <td colspan="2">Total général</td>
+                        <td>4</td>
+                    </tr>
+                    <tr style="background:#ecfdf5;">
+                        <td colspan="2">Crédits exigés</td>
+                        <td>4</td>
+                    </tr>
+                    <tr style="background:#fef3c7;">
+                        <td colspan="2">Crédits supplémentaires</td>
+                        <td>0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        
+        <!-- MBUNGU TSUMBU Jean Pierre -->
+        <div class="prof-card" data-search="mbungu tsumbu jean pierre mecanique seminaire physique">
+            <div class="prof-header">
+                <div class="flex-header">
+                    <div>
+                        <div class="prof-name">MBUNGU TSUMBU Jean Pierre</div>
+                        <div class="prof-matricule">Matricule : 7.871.474 E</div>
+                        <span class="prof-grade" style="background:#fef2f2; color:#991b1b;">Professeur Émérite</span>
+                    </div>
+                    <div>
+                        <span class="badge-total-global">Total : 4 Crédits</span>
+                    </div>
+                </div>
+            </div>
+
+            <table class="charge-table">
+                <thead>
+                    <tr>
+                        <th>Cours dispensé(s)</th>
+                        <th>Année / Filière</th>
+                        <th>Crédits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mécanique (Partie 1)</td>
+                        <td>L1 LMD Physique</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Séminaire</td>
+                        <td>M1 Physique (tous parcours)</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>TFE &amp; TFC (Encadrement)</td>
+                        <td>-</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr style="font-weight:bold; background:#f3f4f6;">
+                        <td colspan="2">Total général</td>
+                        <td>4</td>
+                    </tr>
+                    <tr style="background:#ecfdf5;">
+                        <td colspan="2">Crédits exigés</td>
+                        <td>4</td>
+                    </tr>
+                    <tr style="background:#fef3c7;">
+                        <td colspan="2">Crédits supplémentaires</td>
+                        <td>0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- PHUKU PHUATI Edmond -->
+        <div class="prof-card" data-search="phuku phuati edmond initiation recherche scientifique seminaire physique">
+            <div class="prof-header">
+                <div class="flex-header">
+                    <div>
+                        <div class="prof-name">PHUKU PHUATI Edmond</div>
+                        <div class="prof-matricule">Matricule : 7.876.210 N</div>
+                        <span class="prof-grade" style="background:#fef2f2; color:#991b1b;">Professeur Émérite</span>
+                    </div>
+                    <div>
+                        <span class="badge-total-global">Total : 5 Crédits</span>
+                    </div>
+                </div>
+            </div>
+
+            <table class="charge-table">
+                <thead>
+                    <tr>
+                        <th>Cours dispensé(s)</th>
+                        <th>Année / Filière</th>
+                        <th>Crédits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Initiation à la Recherche Scientifique</td>
+                        <td>L2 LMD Physique</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Séminaire</td>
+                        <td>M1 Physique (tous parcours)</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>TFE &amp; TFC (Encadrement)</td>
+                        <td>-</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr style="font-weight:bold; background:#f3f4f6;">
+                        <td colspan="2">Total général</td>
+                        <td>5</td>
+                    </tr>
+                    <tr style="background:#ecfdf5;">
+                        <td colspan="2">Crédits exigés</td>
+                        <td>4</td>
+                    </tr>
+                    <tr style="background:#fef3c7;">
+                        <td colspan="2">Crédits supplémentaires</td>
+                        <td>1</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+	
+	
+	<!-- ================================================================= -->
+<!-- SECTION 2 : PROFESSEURS ORDINAIRES                                -->
+<!-- ================================================================= -->
+<div class="category-section">
+    <h2 class="category-title ordinaire">Professeurs Ordinaires</h2>
+
+    <!-- MUKANGE BESA Anscaire -->
+    <div class="prof-card" data-search="mukange besa anscaire ondes mecaniques risques naturels sismologie geophysique mecanique fluides physique gravimetrie pompes compresseurs pger geosciences geologie">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MUKANGE BESA Anscaire</div>
+                    <div class="prof-matricule">Matricule : 7.924.349 A</div>
+                    <span class="prof-grade">Professeur Ordinaire</span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 33 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ondes mécaniques</td>
+                    <td>L1 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Risques naturels</td>
+                    <td>M1 Physique (tous)</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Sismologie Générale</td>
+                    <td>M1 GéoPhys</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Géophysique Générale</td>
+                    <td>M1 Géologie</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Mécanique des fluides</td>
+                    <td>B1 &amp; B2 PGER</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Mécanique des fluides</td>
+                    <td>L2 Géosciences</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Physique Générale</td>
+                    <td>L2 Géosciences</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Gravimétrie Générale</td>
+                    <td>M1 Géophysique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Pompes et compresseurs</td>
+                    <td>M1 PGER</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>13</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>33</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>20</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>13</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- EFOTO EALE Louis -->
+    <div class="prof-card" data-search="efoto eale louis mecanique fluides risques naturels modelisation thermique modelisation fluidique">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">EFOTO EALE Louis</div>
+                    <div class="prof-matricule">Matricule : 7.039.393 V</div>
+                    <span class="prof-grade">Professeur Ordinaire</span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 20 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mécanique des fluides (Partie 2)</td>
+                    <td>L2 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Risques naturels</td>
+                    <td>M1 Géophysique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Modélisation thermique</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>1.5</td>
+                </tr>
+                <tr>
+                    <td>Modélisation fluidique</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>1.5</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>13</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>20</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>20</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- KAZADI MUKENGA-BANTU Albert -->
+    <div class="prof-card" data-search="kazadi mukenga bantu albert thermodynamique plasma transport vide genie physique">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">KAZADI MUKENGA-BANTU Albert</div>
+                    <div class="prof-matricule">Matricule : 7.912.792 N</div>
+                    <span class="prof-grade">Professeur Ordinaire</span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 23 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Thermodynamique (Partie 2)</td>
+                    <td>L2 LMD Physique</td>
+                    <td>2.5</td>
+                </tr>
+                <tr>
+                    <td>Physique du plasma</td>
+                    <td>M1 Génie Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Phénomène de transport</td>
+                    <td>M1 Génie Physique</td>
+                    <td>1.5</td>
+                </tr>
+                <tr>
+                    <td>Techniques du vide</td>
+                    <td>M2 Génie Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>13</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>23</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>20</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>3</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- BOPILI MBOTIA LEPIBA Richard -->
+    <div class="prof-card" data-search="bopili mbotia lepiba richard mecanique rationnelle outils mathematiques basses temperatures physique generale">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">BOPILI MBOTIA LEPIBA Richard</div>
+                    <div class="prof-matricule">Matricule : 7.899.913 K</div>
+                    <span class="prof-grade">Professeur Ordinaire</span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 21.5 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mécanique rationnelle (Partie 2)</td>
+                    <td>L2 LMD Physique</td>
+                    <td>1.5</td>
+                </tr>
+                <tr>
+                    <td>Outils mathématiques</td>
+                    <td>M1 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Basses températures</td>
+                    <td>M1 Génie Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Physique Générale (Mécanique)</td>
+                    <td>L1 LMD Informatique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>13</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>21.5</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>20</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>1.5</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- TONDOZI KETO François -->
+    <div class="prof-card" data-search="tondozi keto francois distribution transformees">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">TONDOZI KETO François</div>
+                    <div class="prof-matricule">Matricule : -</div>
+                    <span class="prof-grade">Professeur Ordinaire</span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 2.5 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Distribution et transformées</td>
+                    <td>L2 LMD Physique</td>
+                    <td>2.5</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>2.5</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>20</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<!-- ================================================================= -->
+<!-- SECTION 2 : PROFESSEURS FULL                              -->
+<!-- ================================================================= -->
+
+<div class="category-section">
+    <h2 class="category-title professeur">Professeurs</h2>
+
+    <!-- ======================================BALONDO IYELA Daddy========================================================================== -->
+    <div class="prof-card" data-search="balondo iyela daddy professeur mecanique quantique mecanique statistique groupe de lie algebre de lie">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">BALONDO IYELA Daddy</div>
+                    <div class="prof-matricule">Matricule : 7.945.136 K</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur Ordinaire
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 36 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mécanique</td>
+                    <td>L1 LMD Environnement</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Mécanique rationnelle</td>
+                    <td>B3 PG / Production-Exploitation</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Mécanique quantique (Partie 1)</td>
+                    <td>L3 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Mécanique statistique</td>
+                    <td>L3 LMD Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Mécanique statistique II</td>
+                    <td>M1 Subatomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Groupe de Lie</td>
+                    <td>M1 Subatomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Algèbre de Lie</td>
+                    <td>M1 Subatomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Mécanique quantique</td>
+                    <td>M1 Chimie</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ======================================KAKUDJI MWILAMBWE Ernest========================================================================== -->
+    <div class="prof-card" data-search="kakudji mwilambwe ernest optique electronique physique generale metrologie certification spectroscopie laser labview">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">KAKUDJI MWILAMBWE Ernest</div>
+                    <div class="prof-matricule">Matricule : 7.933.337 S</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 33 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Optique Géométrique</td>
+                    <td>L1 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Électronique I</td>
+                    <td>L2 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Physique Générale</td>
+                    <td>L1 LMD Pharmacie</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Fondamentaux de la métrologie</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Exigences normatives et certification</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Techniques spectroscopiques avancées</td>
+                    <td>M1 Physique (tous parcours)</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Lasers et applications</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Automate programmable &amp; LabVIEW</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>14</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>33</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>24</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>9</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ======================================KILEBA MATONDO Didier========================================================================== -->
+    <div class="prof-card" data-search="kileba matondo didier relativite restreinte astronomie astrophysique anglais phenomenes vibratoires etoiles">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">KILEBA MATONDO Didier</div>
+                    <div class="prof-matricule">Matricule : 7.925.765 V</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 31 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Relativité restreinte</td>
+                    <td>L3 LMD Mathématiques</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Phénomènes vibratoires et optique</td>
+                    <td>L1 LMD Environnement</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Anglais II</td>
+                    <td>L2 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Astronomie &amp; Astrophysique</td>
+                    <td>L3 LMD Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Initiation à l’Astrophysique</td>
+                    <td>M1 Géophysique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Vie et mort des étoiles</td>
+                    <td>M1 Subatomique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Astrophysique avancée</td>
+                    <td>M1 Subatomique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>14</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>31</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>24</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>7</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ======================================LOHALO ROSTHA Paulo========================================================================== -->
+    <div class="prof-card" data-search="loholo rostha paulo statistique descriptive electricite magnetisme administration">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">LOHALO ROSTHA Paulo</div>
+                    <div class="prof-matricule">Matricule : 7.899.710 V</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 27 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Statistique descriptive</td>
+                    <td>L1 LMD Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Électricité</td>
+                    <td>L2 LMD Chimie</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Magnétisme</td>
+                    <td>L1 LMD Chimie</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Administration</td>
+                    <td>-</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>14</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>27</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>24</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>3</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ======================================MAFA TAKISA========================================================================== -->
+    <div class="prof-card" data-search="mafa takisa relativite restreinte electrodynamique physique generale medecine dentaire">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MAFA TAKISA</div>
+                    <div class="prof-matricule">Matricule : 7.937.950 T</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 26 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Relativité restreinte</td>
+                    <td>L2 LMD Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Électrodynamique classique</td>
+                    <td>L3 LMD Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Physique Générale</td>
+                    <td>B1 Médecine Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Physique Générale</td>
+                    <td>B1 Médecine Dentaire</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>14</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>26</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>24</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>2</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ======================================MBATA MULI-WAVYO Albert========================================================================== -->
+    <div class="prof-card" data-search="mbata muli wavyo albert optique electricite thermodynamique geomagnetisme acquisition donnees modelisation magnetique instrumentation spectroscopie">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MBATA MULI-WAVYO Albert</div>
+                    <div class="prof-matricule">Matricule : 7.899.721 R</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 36.5 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Optique ondulatoire</td>
+                    <td>L1 LMD Physique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Électricité</td>
+                    <td>L1 LMD Sciences de la vie</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Thermodynamique appliquée</td>
+                    <td>B2 LMD Pétrole-Gaz</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Géomagnétisme</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Acquisition de données géophysiques</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>1.5</td>
+                </tr>
+                <tr>
+                    <td>Modélisation des phénomènes magnétiques</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Instrumentation médicale</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Machines thermiques</td>
+                    <td>M1 Génie Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Spectroscopies à dispersion d’énergie</td>
+                    <td>M1 Génie Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Spectroscopies à dispersion de longueur d’onde</td>
+                    <td>M1 Génie Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>14</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>36.5</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>24</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>12.5</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ======================================MUANDA NGIMBI Robert========================================================================== -->
+    <div class="prof-card" data-search="muanda ngimbi robert magnetisme phenomenes magnetiques thermodynamique electromecanique centrale nucleaire geothermie mecanique">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MUANDA NGIMBI Robert</div>
+                    <div class="prof-matricule">Matricule : 7.900.111 N</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 31.5 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Magnétisme</td>
+                    <td>L2 LMD Physique</td>
+                    <td>2.5</td>
+                </tr>
+                <tr>
+                    <td>Phénomènes magnétiques dans les solides</td>
+                    <td>M1 Génie Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Thermodynamique des processus irréversibles</td>
+                    <td>M1 Génie Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Physique Générale</td>
+                    <td>B1 BIOMED</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Électromécanique</td>
+                    <td>M1 Énergétique / Pétrole-Gaz</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Centrale Nucléaire et géothermie</td>
+                    <td>M2 Énergie &amp; Environnement</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Mécanique</td>
+                    <td>L1 Chimie &amp; Industrie</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Centrale Nucléaire</td>
+                    <td>B2 Énergie &amp; Environnement</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>14</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>31.5</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>24</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>7.5</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ======================================TSHITENGE MBUEBUE Jean-Marie========================================================================== -->
+    <div class="prof-card" data-search="tshitenge mbuebue jean marie outils numeriques informatique energie nucleaire neutronique reacteurs radioisotope traitement signal modelisation fluidique teledetection">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">TSHITENGE MBUEBUE Jean-Marie</div>
+                    <div class="prof-matricule">Matricule : 7.900.242 X</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 31 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Outils numériques (Linux, C++, Root)</td>
+                    <td>M1 Physique Subatomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Informatique I</td>
+                    <td>L1 LMD Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Introduction à l’énergie nucléaire</td>
+                    <td>M1 Physique Subatomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Neutronique et physique des réacteurs</td>
+                    <td>M2 Physique Subatomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Production de radioisotope</td>
+                    <td>M2 Physique Subatomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Traitement du signal</td>
+                    <td>M1 Physique Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Modélisation fluidique</td>
+                    <td>M1 Physique Génie</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Principes physiques de la télédétection</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>14</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>31</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>24</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>7</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ======================================ZUKA MANIANIA Baudouin========================================================================== -->
+    <div class="prof-card" data-search="zuka maniania baudouin electricite generale thermodynamique mecanique physique basses temperatures bandes electroniques transport magnetisme">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">ZUKA MANIANIA Baudouin</div>
+                    <div class="prof-matricule">Matricule : 7.924.355 S</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 31 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Électricité générale</td>
+                    <td>L1 LMD Informatique / Mathématiques</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Thermodynamique</td>
+                    <td>L1 LMD Environnement</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Mécanique générale</td>
+                    <td>L1 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Physique de basses températures</td>
+                    <td>M2 Génie Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Bandes électroniques et phénomènes de transport</td>
+                    <td>M1 Génie Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Expérience d’électricité et de magnétisme</td>
+                    <td>M2 Génie Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>14</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>31</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>24</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>6</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+<!-- ================================================================= -->
+<!-- PROFESSEURS ASSOCIES                  -->
+<!-- ================================================================= -->
+
+<!-- ====================================== PROFESSEURS ASSOCIÉS ================================================================== -->
+
+<div class="category-section">
+    <h2 class="category-title associe">Professeurs Associés</h2>
+
+    <!-- ====================================== KALE SAYI Kenny ================================================================== -->
+    <div class="prof-card" data-search="kale sayi kenny physique nucleaire fonctions speciales analyse donnees intelligence artificielle detecteurs interaction particule matiere">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">KALE SAYI Kenny</div>
+                    <div class="prof-matricule">Matricule : 7.100.1128 A</div>
+                    <span class="prof-grade" style="background:var(--accent-light); color:var(--accent);">
+                        Professeur Associé
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 30.5 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Physique Nucléaire (Partie 2)</td>
+                    <td>L3 LMD Physique</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Fonctions spéciales (Partie 2)</td>
+                    <td>L3 LMD Physique</td>
+                    <td>1.5</td>
+                </tr>
+                <tr>
+                    <td>Analyse de données</td>
+                    <td>M1 Sub-atomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Intelligence artificielle</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Analyse de données</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Essai destructif et non destructif</td>
+                    <td>M2 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Fondamentaux Interaction Particule-Matière</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Physique de détecteurs</td>
+                    <td>M1 Sub-atomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>30.5</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>0.5</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ====================================== KIGOTSI KASEREKA John ================================================================== -->
+    <div class="prof-card" data-search="kigotsi kasereka john thermodynamique processus irreversibles machines thermiques atmosphere">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">KIGOTSI KASEREKA John</div>
+                    <div class="prof-matricule">Matricule : -</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 25 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Thermodynamique (Partie 1)</td>
+                    <td>L2 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Thermodynamique des processus irréversibles</td>
+                    <td>M1 Génie Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Machines thermiques</td>
+                    <td>M1 Génie Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Expériences de thermodynamique</td>
+                    <td>M1 Génie Physique</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Thermodynamique de l'atmosphère</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>14</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>25</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>24</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>1</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ====================================== KONGOLO TSHIKALA Pardaillan ================================================================== -->
+    <div class="prof-card" data-search="kongolo tshikala pardaillan electronique analogique microcontroleur acquisition capteurs nanotechnologie architecture systemes numeriques">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">KONGOLO TSHIKALA Pardaillan</div>
+                    <div class="prof-matricule">Matricule : -</div>
+                    <span class="prof-grade" style="background:var(--accent-light); color:var(--accent);">
+                        Professeur Associé
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 30 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Électronique générale</td>
+                    <td>L2 LMD Informatique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Électronique analogique</td>
+                    <td>L3 LMD Physique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Microcontrôleur et carte d'acquisition</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Chaîne d'acquisition</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Conception et caractérisation des capteurs</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Microfabrication et nanoélectronique</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Architecture des systèmes numériques</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ====================================== KONGODA LISIKA Louis ================================================================== -->
+    <div class="prof-card" data-search="kongoda lisika louis informatique hydrologie cartographie sig traitement donnees ocean hydrodynamique electrotechnique programmation">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">KONGODA LISIKA Louis</div>
+                    <div class="prof-matricule">Matricule : 7.924.341 H</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">
+                        Professeur Associé
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 31.5 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Informatique II (Partie 2)</td>
+                    <td>L2 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Hydrologie avancée</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Cartographie SIG</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Traitement des données océanographiques</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>1.5</td>
+                </tr>
+                <tr>
+                    <td>Hydrodynamique des cours d’eau</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Électrotechnique</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Hydrologie générale</td>
+                    <td>B3 Énergétique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Programmation Orientée Objet</td>
+                    <td>L3 LMD Physique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>31.5</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>1.5</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ====================================== LUFUNGULA NKWAMBYA Prosper ================================================================== -->
+    <div class="prof-card" data-search="lufungula nkwambya prosper physique nucleaire fonctions speciales energie nucleaire noyaux deformes reactions nucleaires spectroscopie">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">LUFUNGULA NKWAMBYA Prosper</div>
+                    <div class="prof-matricule">Matricule : 7.751.609 L</div>
+                    <span class="prof-grade" style="background:var(--accent-light); color:var(--accent);">
+                        Professeur Associé
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 34.5 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fonctions spéciales (Partie 1)</td>
+                    <td>L3 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Physique Nucléaire I (Partie 1)</td>
+                    <td>L3 LMD Physique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Physique Nucléaire II (Partie 1 &amp; 2)</td>
+                    <td>M1 Subatomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Introduction à l’énergie nucléaire</td>
+                    <td>M1 Subatomique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Physique Nucléaire I (Partie 1 &amp; 2)</td>
+                    <td>M1 Subatomique</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Noyaux déformés</td>
+                    <td>M2 Subatomique</td>
+                    <td>2.5</td>
+                </tr>
+                <tr>
+                    <td>Réactions nucléaires</td>
+                    <td>M2 Subatomique</td>
+                    <td>2.5</td>
+                </tr>
+                <tr>
+                    <td>Spectroscopie Nucléaire</td>
+                    <td>M2 Subatomique</td>
+                    <td>2.5</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>34.5</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>4.5</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- ====================================== MABIALA MASIALA Toto ================================================================== -->
+    <div class="prof-card" data-search="mabiala masiala toto etat solide">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MABIALA MASIALA Toto</div>
+                    <span class="prof-grade" style="background:#d1fae5; color:#065f46;">Professeur</span>
+                </div>
+                <div><span class="badge-total-global">Total : 75h</span></div>
+            </div>
+        </div>
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Descriptif / Partie</th>
+                    <th>Heures</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Etat solide (L3)</td>
+                    <td>-</td>
+                    <td>75h</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<!-- ====================================== MATINDI BALEMBO Trésor ================================================================== -->
+    <div class="prof-card" data-search="matindi balembo tresor etat solide anglais technique electrotechnique turbomachines centrale thermique optique">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MATINDI BALEMBO Trésor</div>
+                    <div class="prof-matricule">Matricule : 7.991.379 V</div>
+                    <span class="prof-grade" style="background:var(--accent-light); color:var(--accent);">
+                        Professeur Associé
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 53 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Anglais technique</td>
+                    <td>L1 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>État solide 1</td>
+                    <td>L3 LMD Physique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>État solide 2</td>
+                    <td>M1 Sub-atomique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>État solide 2</td>
+                    <td>M1 Génie Physique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Anglais technique</td>
+                    <td>M1 Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Électrotechnique</td>
+                    <td>B3 Énergétique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Turbomachines</td>
+                    <td>B3 Énergétique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Centrale thermique à gaz</td>
+                    <td>B3 Énergétique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Physique générale</td>
+                    <td>L1 LMD Polytechnique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Électricité</td>
+                    <td>B2 Énergétique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Optique géométrique</td>
+                    <td>L1 Chimie LMD</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>53</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>23</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+<!-- ====================================== MATONDO BUAYI Calvain ================================================================== -->
+    <div class="prof-card" data-search="matondo buayi calvain mecanique analytique">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MATONDO BUAYI Calvain</div>
+                    <span class="prof-grade" style="background:var(--accent-light); color:var(--accent);">Professeur Associé</span>
+                </div>
+                <div><span class="badge-total-global">Total : 100h</span></div>
+            </div>
+        </div>
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Descriptif / Partie</th>
+                    <th>Heures</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mécanique analytique (L3)</td>
+                    <td>Partie 1 (50h) + Partie 2 (50h)</td>
+                    <td>100h</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<!-- ====================================== MBOSEI LOBOTA Albert ================================================================== -->
+    <div class="prof-card" data-search="mbosei lobota albert informatique interaction assurance qualite securite industrielle lean management ethique projet">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MBOSEI LOBOTA Albert</div>
+                    <div class="prof-matricule">Matricule : -</div>
+                    <span class="prof-grade" style="background:var(--accent-light); color:var(--accent);">
+                        Professeur Associé
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 30 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Informatique II (Partie 1)</td>
+                    <td>L3 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Fondements de l’Interaction Rayonnement-Matière</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Assurance qualité et Sécurité industrielle</td>
+                    <td>M1 Physique - Instrumentation</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Lean management et conformité</td>
+                    <td>M2 Génie Physique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Éthique et déontologie professionnelle</td>
+                    <td>M2 Génie Physique</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Conception et gestion des projets</td>
+                    <td>M1 Physique (tous parcours)</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+<!-- ====================================== MUNTUMOSI SENZEDI Mérite ================================================================== -->
+    <div class="prof-card" data-search="muntumosi senzedi merite transformees distributions physique appliquee phenomenes vibratoires optique biophysique risques naturels">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MUNTUMOSI SENZEDI Mérite</div>
+                    <div class="prof-matricule">Matricule : 7.924.351 E</div>
+                    <span class="prof-grade" style="background:var(--accent-light); color:var(--accent);">
+                        Professeur Associé
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 31.5 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Transformées et distributions (Partie 2)</td>
+                    <td>L3 LMD Physique</td>
+                    <td>1.5</td>
+                </tr>
+                <tr>
+                    <td>Physique appliquée</td>
+                    <td>L1 LMD Agro</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Phénomènes vibratoires et optique</td>
+                    <td>L1 LMD Sciences de la vie</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Expériences de mécanique, optique et thermodynamique</td>
+                    <td>M1 Physique Génie</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Phénomènes biophysiques</td>
+                    <td>M1 Physique Génie</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Risques naturels</td>
+                    <td>M1 Géophysique Interne</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>31.5</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>1.5</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+<!-- ====================================== MUSONGELA LUBO Alain ================================================================== -->
+    <div class="prof-card" data-search="musongela lubo alain mecanique quantique">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MUSONGELA LUBO Alain</div>
+                    <div class="prof-matricule">Matricule : -</div>
+                    <span class="prof-grade" style="background:var(--accent-light); color:var(--accent);">
+                        Professeur Associé
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 30 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mécanique quantique</td>
+                    <td>L3 LMD Physique</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+<!-- ====================================== NDIADIA KANDOLO Emmanuel ================================================================== -->
+    <div class="prof-card" data-search="ndiadia kandolo emmanuel electricite thermodynamique atmosphere meteorologie synoptique ecoclimatologie bioclimatologie tempetes ouragans eclairs">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">NDIADIA KANDOLO Emmanuel</div>
+                    <div class="prof-matricule">Matricule : 7.900.155 S</div>
+                    <span class="prof-grade" style="background:var(--accent-light); color:var(--accent);">
+                        Professeur Associé
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 30 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Électricité (Partie 1)</td>
+                    <td>L2 LMD Physique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Thermodynamique de l'Atmosphère</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Météorologie synoptique (Partie 1 &amp; 2)</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Éco-climatologie</td>
+                    <td>BAC2 PG/Environnement</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Bio-climatologie</td>
+                    <td>BAC2 PG/Environnement</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Physique des tempêtes et ouragans</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Physique des éclairs (Partie 1)</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+ <!-- ====================================== YOMBO PHAKA Rodriguez ================================================================== -->
+    <div class="prof-card" data-search="yombo phaka rodriguez mecanique rationnelle traitement signaux hardware instrumentation electronique frontale spatial pollution climat python">
+        <div class="prof-header">
+            <div class="flex-header" style="display: flex; align-items: center; gap: 15px;">
+                <img src="yombo.jpg" alt="PROF YOMBO PHAKA Rodriguez" class="prof-photo">
+                <div style="flex-grow: 1;">
+                    <div class="prof-name">YOMBO PHAKA Rodriguez</div>
+                    <div class="prof-matricule">Matricule : 7.969.795 E</div>
+                    <span class="prof-grade" style="background:var(--accent-light); color:var(--accent);">
+                        Professeur Associé
+                    </span>
+                </div>
+                <div>
+                    <span class="badge-total-global">Total : 46.5 Crédits</span>
+                </div>
+            </div>
+        </div>
+
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Année / Filière</th>
+                    <th>Crédits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mécanique Rationnelle (Partie 1)</td>
+                    <td>L2 LMD Physique</td>
+                    <td>1.5</td>
+                </tr>
+                <tr>
+                    <td>Traitement des signaux</td>
+                    <td>L3 LMD Physique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Hardware</td>
+                    <td>L3 LMD Physique</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Instrumentation de Terrain</td>
+                    <td>M2 Physique Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Conception Assistée par Ordinateur</td>
+                    <td>M2 Physique Instrumentation</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Électronique Frontale 1</td>
+                    <td>M1 Physique Subatomique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Électronique Frontale 2</td>
+                    <td>M2 Physique Subatomique</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Sciences spatiales (Exploration)</td>
+                    <td>M2 Géophysique Externe</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Pollution atmosphérique et climat</td>
+                    <td>M1 Géophysique Externe</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Électronique générale</td>
+                    <td>B2 Énergétique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Instrumentation industrielle</td>
+                    <td>M1 Énergétique</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Programmation Python</td>
+                    <td>M1 Physique (tous parcours)</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>TFE &amp; TFC (Encadrement)</td>
+                    <td>-</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight:bold; background:#f3f4f6;">
+                    <td colspan="2">Total général</td>
+                    <td>46.5</td>
+                </tr>
+                <tr style="background:#ecfdf5;">
+                    <td colspan="2">Crédits exigés</td>
+                    <td>30</td>
+                </tr>
+                <tr style="background:#fef3c7;">
+                    <td colspan="2">Crédits supplémentaires</td>
+                    <td>16.5</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+
+<!-- ================================================================= -->
+<!-- LES DOCTEURS                  -->
+<!-- ================================================================= -->
+
+<!-- ====================================== DOCTEURS ================================================================== -->
+
+<div class="category-section">
+    <h2 class="category-title docteur">Docteurs</h2>
+
+    <!-- ====================================== MUANZA KAMUNGA Guy Steve ================================================================== -->
+    <div class="prof-card" data-search="muanza steve mecanique fluides">
+        <div class="prof-header">
+            <div class="flex-header">
+                <div>
+                    <div class="prof-name">MUANZA KAMUNGA Guy Steve</div>
+                    <span class="prof-grade" style="background:#f1f5f9; color:#475569;">Docteur</span>
+                </div>
+                <div><span class="badge-total-global">Total : 50h</span></div>
+            </div>
+        </div>
+        <table class="charge-table">
+            <thead>
+                <tr>
+                    <th>Cours dispensé(s)</th>
+                    <th>Descriptif / Partie</th>
+                    <th>Heures</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mécanique des fluides (L2)</td>
+                    <td>Théories</td>
+                    <td>50h</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- ================================================================= -->
+<!-- ESPACE ASSISTANTS & CHEFS DE TRAVAUX (ONGLET 2)                   -->
+<!-- ================================================================= -->
+<div id="assistants" class="tab-content">
+    <!-- STYLES VISUELS MODERNES -->
+    <style>
+        #assistants {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #1e293b;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .category-subtitle {
+            color: #64748b;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        /* Grille adaptative */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 24px;
+        }
+
+        /* Card container */
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            padding: 16px 20px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        /* Badges de statut */
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.ct {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge.ass {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .card-body {
+            padding: 16px 20px;
+            flex-grow: 1;
+        }
+
+        /* Tableau d'heures interne */
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .hours-table th {
+            text-align: left;
+            padding-bottom: 8px;
+            color: #64748b;
+            font-weight: 600;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .hours-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+        }
+
+        .hours-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .hours-table .col-hours {
+            text-align: center;
+            white-space: nowrap;
+            color: #475569;
+        }
+
+        .hours-table .col-total {
+            text-align: right;
+            font-weight: 600;
+            color: #0284c7;
+        }
+
+        /* Pied de carte avec total global */
+        .card-footer {
+            padding: 12px 20px;
+            background: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .card-footer span {
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .card-footer strong {
+            color: #0f172a;
+            font-size: 1.05rem;
+        }
+    </style>
+
+    <h2 class="category-title">Assistants &amp; Chefs de Travaux</h2>
+    <p class="category-subtitle">Gestion des TP, TD et comptabilisation complète de la charge horaire d'encadrement.</p>
+
+    <div class="cards-grid">
+
+        <!-- 1. CT BILIKI -->
+        <div class="card">
+            <div class="card-header">
+                <h3>CT BILIKI</h3>
+                <span class="badge ct">Chef de Travaux</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Mécanique Générale (L1 Phys)</td><td class="col-hours">30h</td><td class="col-hours">30h</td><td class="col-total">60h</td></tr>
+                        <tr><td>Optique Géométrique (L1 Phys)</td><td class="col-hours">10h</td><td class="col-hours">8h</td><td class="col-total">18h</td></tr>
+                        <tr><td>Magnétisme (L2 Phys)</td><td class="col-hours">15h</td><td class="col-hours">12h</td><td class="col-total">27h</td></tr>
+                        <tr><td>Phénomènes Géophysiques (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Physique Générale (B0 Prep)</td><td class="col-hours">10h</td><td class="col-hours">25h</td><td class="col-total">35h</td></tr>
+                        <tr><td>Physique Générale (B1 Sci)</td><td class="col-hours">10h</td><td class="col-hours">25h</td><td class="col-total">35h</td></tr>
+                        <tr><td>Gravimétrie &amp; Méth. Électrique (M Géophys)</td><td colspan="3" class="col-total" style="color: #64748b;">Encadrement</td></tr>
+                        <tr><td>Risques Naturels (M Géophys)</td><td colspan="3" class="col-total" style="color: #64748b;">Encadrement</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>194 heures</strong>
+            </div>
+        </div>
+
+        <!-- 2. CT KIKUNGA -->
+        <div class="card">
+            <div class="card-header">
+                <h3>CT KIKUNGA</h3>
+                <span class="badge ct">Chef de Travaux</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Q. Spéciales Méc. Quantique (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Mécanique Quantique 2 (M1 Sub)</td><td class="col-hours">17h</td><td class="col-hours">17h</td><td class="col-total">34h</td></tr>
+                        <tr><td>Mécanique Statistique 2 (M1 Sub)</td><td class="col-hours">13h</td><td class="col-hours">8h</td><td class="col-total">21h</td></tr>
+                        <tr><td>Groupes Discrets (M1 Sub)</td><td class="col-hours">-</td><td class="col-hours">21h</td><td class="col-total">21h</td></tr>
+                        <tr><td>Algèbre &amp; Anal. Tensorielles (M1 Sub)</td><td class="col-hours">-</td><td class="col-hours">20.5h</td><td class="col-total">20.5h</td></tr>
+                        <tr><td>Théorie Classique des Champs (M1 Sub)</td><td class="col-hours">-</td><td class="col-hours">20.5h</td><td class="col-total">20.5h</td></tr>
+                        <tr><td>Groupes de Lie (M1 Sub)</td><td class="col-hours">-</td><td class="col-hours">20.5h</td><td class="col-total">20.5h</td></tr>
+                        <tr><td>Modèle Standard Particules (M1 Sub)</td><td class="col-hours">-</td><td class="col-hours">10h</td><td class="col-total">10h</td></tr>
+                        <tr><td>Théorie Quantique des Champs (M1 Sub)</td><td class="col-hours">-</td><td class="col-hours">10h</td><td class="col-total">10h</td></tr>
+                        <tr><td>Chromodynamique Quantique (M2 Sub)</td><td class="col-hours">21h</td><td class="col-hours">13h</td><td class="col-total">34h</td></tr>
+                        <tr><td>Relativité Générale &amp; Cosmol. (M2 Sub)</td><td class="col-hours">21h</td><td class="col-hours">13h</td><td class="col-total">34h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>244.5 heures</strong>
+            </div>
+        </div>
+
+        <!-- 3. CT SEKE -->
+        <div class="card">
+            <div class="card-header">
+                <h3>CT SEKE</h3>
+                <span class="badge ct">Chef de Travaux</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Ondes Mécaniques (L1 Phys)</td><td class="col-hours">20h</td><td class="col-hours">17h</td><td class="col-total">37h</td></tr>
+                        <tr><td>Optique Ondulatoire (L1 Phys)</td><td class="col-hours">20h</td><td class="col-hours">17h</td><td class="col-total">37h</td></tr>
+                        <tr><td>Informatique II (L2 Phys)</td><td class="col-hours">15h</td><td class="col-hours">12h</td><td class="col-total">27h</td></tr>
+                        <tr><td>État Solide I (L3 Phys)</td><td class="col-hours">20h</td><td class="col-hours">18h</td><td class="col-total">38h</td></tr>
+                        <tr><td>Bandes Électroniques (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Matériaux Semi-conducteurs (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Spectroscopies Disp. Énergie (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Spectroscopies Disp. Long. Onde (M1)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Machines Thermiques (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Techniques Spectroscopiques (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Propriétés Diélectriques (M2 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Phénomènes Magnétiques (M2 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Exp. Méc., Opt., Thermo (M2 Phys)</td><td class="col-hours">50h</td><td class="col-hours">-</td><td class="col-total">50h</td></tr>
+                        <tr><td>Pompes &amp; Compresseurs (M1 Prod)</td><td class="col-hours">10h</td><td class="col-hours">10h</td><td class="col-total">20h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>361 heures</strong>
+            </div>
+        </div>
+
+        <!-- 4. CT LUSAMBA -->
+        <div class="card">
+            <div class="card-header">
+                <h3>CT LUSAMBA</h3>
+                <span class="badge ct">Chef de Travaux</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Électronique Digitale (L2 Info)</td><td class="col-hours">10h</td><td class="col-hours">10h</td><td class="col-total">20h</td></tr>
+                        <tr><td>Électronique I (L2 Phys)</td><td class="col-hours">15h</td><td class="col-hours">12h</td><td class="col-total">27h</td></tr>
+                        <tr><td>Électronique An. &amp; Dig. (L3 Phys)</td><td class="col-hours">15h</td><td class="col-hours">22h</td><td class="col-total">37h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>84 heures</strong>
+            </div>
+        </div>
+
+        <!-- 5. CT KASANDA -->
+        <div class="card">
+            <div class="card-header">
+                <h3>CT KASANDA</h3>
+                <span class="badge ct">Chef de Travaux</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Thermodynamique (L2 Phys)</td><td class="col-hours">15h</td><td class="col-hours">23h</td><td class="col-total">38h</td></tr>
+                        <tr><td>Physique du Plasma (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Thermo. Proc. Irréversibles (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Exp. Méc., Opt., Thermo (M2 Phys)</td><td class="col-hours">50h</td><td class="col-hours">-</td><td class="col-total">50h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>126 heures</strong>
+            </div>
+        </div>
+
+        <!-- 6. CT MUTSHAIL -->
+        <div class="card">
+            <div class="card-header">
+                <h3>CT MUTSHAIL</h3>
+                <span class="badge ct">Chef de Travaux</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Mécanique des Fluides (L2 Phys)</td><td class="col-hours">10h</td><td class="col-hours">10h</td><td class="col-total">20h</td></tr>
+                        <tr><td>Électricité (L2 Phys)</td><td class="col-hours">15h</td><td class="col-hours">12h</td><td class="col-total">27h</td></tr>
+                        <tr><td>Physique Nucléaire I (L3 Phys)</td><td class="col-hours">20h</td><td class="col-hours">18h</td><td class="col-total">38h</td></tr>
+                        <tr><td>Exp. Électricité &amp; Mag. (M2 Phys)</td><td class="col-hours">50h</td><td class="col-hours">-</td><td class="col-total">50h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>135 heures</strong>
+            </div>
+        </div>
+
+        <!-- 7. ASS MUAMBA -->
+        <div class="card">
+            <div class="card-header">
+                <h3>ASS MUAMBA</h3>
+                <span class="badge ass">Assistant</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Physique Générale (L2 Geosc)</td><td class="col-hours">20h</td><td class="col-hours">13h</td><td class="col-total">33h</td></tr>
+                        <tr><td>Mécanique (L1 Info)</td><td class="col-hours">10h</td><td class="col-hours">10h</td><td class="col-total">20h</td></tr>
+                        <tr><td>Électricité (L1 Info)</td><td class="col-hours">10h</td><td class="col-hours">10h</td><td class="col-total">20h</td></tr>
+                        <tr><td>Ondes Mécaniques (L1 Phys)</td><td class="col-hours">20h</td><td class="col-hours">17h</td><td class="col-total">37h</td></tr>
+                        <tr><td>Optique Ondulatoire (L1 Phys)</td><td class="col-hours">20h</td><td class="col-hours">17h</td><td class="col-total">37h</td></tr>
+                        <tr><td>Mécanique Rationnelle (L2 Phys)</td><td class="col-hours">-</td><td class="col-hours">30h</td><td class="col-total">30h</td></tr>
+                        <tr><td>État Solide I (L3 Phys)</td><td class="col-hours">20h</td><td class="col-hours">18h</td><td class="col-total">38h</td></tr>
+                        <tr><td>Physique Basses Tempér. (M2 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>234 heures</strong>
+            </div>
+        </div>
+
+        <!-- 8. ASS KASONGA -->
+        <div class="card">
+            <div class="card-header">
+                <h3>ASS KASONGA</h3>
+                <span class="badge ass">Assistant</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Mécanique Générale (L1 Phys)</td><td class="col-hours">30h</td><td class="col-hours">30h</td><td class="col-total">60h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>60 heures</strong>
+            </div>
+        </div>
+
+        <!-- 9. ASS W'ISHE -->
+        <div class="card">
+            <div class="card-header">
+                <h3>ASS W'ISHE</h3>
+                <span class="badge ass">Assistant</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Distributions &amp; Transf. (L3 Phys)</td><td class="col-hours">-</td><td class="col-hours">20h</td><td class="col-total">20h</td></tr>
+                        <tr><td>Phénomènes Biophysiques (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Physique du Plasma (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Thermo. Proc. Irréversibles (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Analyse des Données (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Physique d'État Solide 2 (M1 Sub)</td><td class="col-hours">13h</td><td class="col-hours">8h</td><td class="col-total">21h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>117 heures</strong>
+            </div>
+        </div>
+
+        <!-- 10. ASS BUENIMIO -->
+        <div class="card">
+            <div class="card-header">
+                <h3>ASS BUENIMIO LOMAMI Djibi</h3>
+                <span class="badge ass">Assistant</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Électricité (L2 Phys)</td><td class="col-hours">15h</td><td class="col-hours">12h</td><td class="col-total">27h</td></tr>
+                        <tr><td>Magnétisme (L2 Phys)</td><td class="col-hours">15h</td><td class="col-hours">12h</td><td class="col-total">27h</td></tr>
+                        <tr><td>Astronomie &amp; Astrophysique (L3 Phys)</td><td class="col-hours">15h</td><td class="col-hours">22h</td><td class="col-total">37h</td></tr>
+                        <tr><td>Exp. Méc., Opt., Thermo (M2 Phys)</td><td class="col-hours">50h</td><td class="col-hours">-</td><td class="col-total">50h</td></tr>
+                        <tr><td>Astrophysique Avancée (M2 Sub)</td><td class="col-hours">34h</td><td class="col-hours">-</td><td class="col-total">34h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>175 heures</strong>
+            </div>
+        </div>
+
+        <!-- 11. ASS BIMBANGU -->
+        <div class="card">
+            <div class="card-header">
+                <h3>ASS BIMBANGU</h3>
+                <span class="badge ass">Assistant</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Thermodynamique (L2 Phys)</td><td class="col-hours">15h</td><td class="col-hours">23h</td><td class="col-total">38h</td></tr>
+                        <tr><td>Machines Thermiques (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Désintégrations &amp; Forces Nucl. (M1)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>76 heures</strong>
+            </div>
+        </div>
+
+        <!-- 12. ASS RAMAZANI -->
+        <div class="card">
+            <div class="card-header">
+                <h3>ASS RAMAZANI</h3>
+                <span class="badge ass">Assistant</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Spectroscopie Nucléaire (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Intro. Énergie Nucléaire (M1 Sub)</td><td class="col-hours">8h</td><td class="col-hours">5h</td><td class="col-total">13h</td></tr>
+                        <tr><td>Production Radio-isotopes (M2 Sub)</td><td class="col-hours">21h</td><td class="col-hours">13h</td><td class="col-total">34h</td></tr>
+                        <tr><td>Dosimétrie &amp; Radioprotection (M2 Sub)</td><td class="col-hours">33h</td><td class="col-hours">-</td><td class="col-total">33h</td></tr>
+                        <tr><td>Physique Médicale (M2 Sub)</td><td class="col-hours">8h</td><td class="col-hours">5h</td><td class="col-total">13h</td></tr>
+                        <tr><td>Machine Learning (M2 Sub)</td><td class="col-hours">12.5h</td><td class="col-hours">7.5h</td><td class="col-total">20h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>132 heures</strong>
+            </div>
+        </div>
+
+        <!-- 13. ASS NZABI -->
+        <div class="card">
+            <div class="card-header">
+                <h3>ASS NZABI</h3>
+                <span class="badge ass">Assistant</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Physique Numérique &amp; Sim. (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Modélisation Fluides Mvt (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>38 heures</strong>
+            </div>
+        </div>
+
+        <!-- 14. ASS MAFUTA KIB -->
+        <div class="card">
+            <div class="card-header">
+                <h3>ASS MAFUTA KIBAZOLA</h3>
+                <span class="badge ass">Assistant</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Statistique Descriptive (L1 Phys)</td><td class="col-hours">20h</td><td class="col-hours">15h</td><td class="col-total">35h</td></tr>
+                        <tr><td>Programmation (L3 Phys)</td><td class="col-hours">15h</td><td class="col-hours">22h</td><td class="col-total">37h</td></tr>
+                        <tr><td>Traitement des Signaux (L3 Phys)</td><td class="col-hours">15h</td><td class="col-hours">22h</td><td class="col-total">37h</td></tr>
+                        <tr><td>Microcontrôleurs (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Programmation Python (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Optique Non Linéaire (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                        <tr><td>Exp. Électricité &amp; Mag. (M2 Phys)</td><td class="col-hours">50h</td><td class="col-hours">-</td><td class="col-total">50h</td></tr>
+                        <tr><td>Statistiques Avancées (M1 Sub)</td><td class="col-hours">-</td><td class="col-hours">13h</td><td class="col-total">13h</td></tr>
+                        <tr><td>Programmation Python (M1 Sub)</td><td class="col-hours">4h</td><td class="col-hours">3h</td><td class="col-total">7h</td></tr>
+                        <tr><td>Analyse des Données (M1 Sub)</td><td class="col-hours">4h</td><td class="col-hours">3h</td><td class="col-total">7h</td></tr>
+                        <tr><td>Électronique Frontale 1 (M1 Sub)</td><td class="col-hours">13h</td><td class="col-hours">8h</td><td class="col-total">21h</td></tr>
+                        <tr><td>Instrumentation Générale (M1 Sub)</td><td class="col-hours">13h</td><td class="col-hours">-</td><td class="col-total">13h</td></tr>
+                        <tr><td>Électronique Frontale 2 (M1 Sub)</td><td class="col-hours">13h</td><td class="col-hours">8h</td><td class="col-total">21h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>298 heures</strong>
+            </div>
+        </div>
+
+        <!-- 15. ASS EYUMU -->
+        <div class="card">
+            <div class="card-header">
+                <h3>ASS EYUMU</h3>
+                <span class="badge ass">Assistant</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Informatique I (L1 Phys)</td><td class="col-hours">20h</td><td class="col-hours">15h</td><td class="col-total">35h</td></tr>
+                        <tr><td>Informatique II (L2 Phys)</td><td class="col-hours">15h</td><td class="col-hours">12h</td><td class="col-total">27h</td></tr>
+                        <tr><td>Relativité Restreinte (L2 Phys)</td><td class="col-hours">-</td><td class="col-hours">30h</td><td class="col-total">30h</td></tr>
+                        <tr><td>Physique Quantique (L3 Phys)</td><td class="col-hours">-</td><td class="col-hours">22h</td><td class="col-total">22h</td></tr>
+                        <tr><td>Fonctions Spéciales (L3 Phys)</td><td class="col-hours">-</td><td class="col-hours">20h</td><td class="col-total">20h</td></tr>
+                        <tr><td>Électrodynamique Class. (L3 Phys)</td><td class="col-hours">-</td><td class="col-hours">10h</td><td class="col-total">10h</td></tr>
+                        <tr><td>Formalismes Méc. Quant. (M1 Phys)</td><td class="col-hours">13h</td><td class="col-hours">6h</td><td class="col-total">19h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>163 heures</strong>
+            </div>
+        </div>
+
+        <!-- 16. ASS AWUYA -->
+        <div class="card">
+            <div class="card-header">
+                <h3>ASS AWUYA</h3>
+                <span class="badge ass">Assistant</span>
+            </div>
+            <div class="card-body">
+                <table class="hours-table">
+                    <thead>
+                        <tr>
+                            <th>Matière &amp; Promotion</th>
+                            <th class="col-hours">TP</th>
+                            <th class="col-hours">TD</th>
+                            <th class="col-total">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Mécanique des Fluides (L2 Phys)</td><td class="col-hours">10h</td><td class="col-hours">10h</td><td class="col-total">20h</td></tr>
+                        <tr><td>Mécanique Analytique (L3 Phys)</td><td class="col-hours">-</td><td class="col-hours">33h</td><td class="col-total">33h</td></tr>
+                        <tr><td>Physique des Particules (M1 Sub)</td><td class="col-hours">17h</td><td class="col-hours">10h</td><td class="col-total">27h</td></tr>
+                        <tr><td>Interaction Part.-Matière (M1 Sub)</td><td class="col-hours">17h</td><td class="col-hours">10h</td><td class="col-total">27h</td></tr>
+                        <tr><td>Physique Nucléaire 2 (M1 Sub)</td><td class="col-hours">4h</td><td class="col-hours">3h</td><td class="col-total">7h</td></tr>
+                        <tr><td>Physique des Saveurs (M2 Sub)</td><td class="col-hours">-</td><td class="col-hours">33h</td><td class="col-total">33h</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <span>Charge totale :</span>
+                <strong>147 heures</strong>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- ====================================== Assistant Wishe ====================================== -->
+
+<!-- -----------------------------------------CONTENUS DES ONGLETS =========================================================--=====================>
+<!-- -----------------------------------------============================================================================================ ======-->
+        <!-- MAQUETTES LICENCE 1 (S1 & S2) -->
+        <div id="l1" class="tab-content">
+            <div class="semester-title">📊 Licence 1 / Semestre 1</div>
+            <table class="program-table">
+                <thead>
+                    <tr>
+                        <th>N°</th><th>Codes</th><th>UE</th><th>EC</th><th>CM</th><th>TP</th><th>TD</th><th>Crédits EC</th><th>Crédits UE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">1</td><td rowspan="2">PHY101</td><td rowspan="2">UE1 : Mécanique et Optique géométrique</td><td>Mécanique</td><td>45</td><td>30</td><td>30</td><td>6</td><td rowspan="2">8</td>
+                    </tr>
+                    <tr>
+                        <td>Optique géométrique</td><td>15</td><td>15</td><td>10</td><td>2</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">2</td><td rowspan="3">MAT191</td><td rowspan="3">UE2 : Analyse Infinitésimale 1</td><td>Analyse Infinitésimale I</td><td>30</td><td>-</td><td>40</td><td>4</td><td rowspan="3">7</td>
+                    </tr>
+                    <tr>
+                        <td>Equations différentielles ordinaires</td><td>15</td><td>-</td><td>25</td><td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Calculus</td><td>10</td><td>-</td><td>15</td><td>1</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">3</td><td rowspan="2">CHI191</td><td rowspan="2">UE3 : Chimie générale</td><td>Chimie physique I</td><td>45</td><td>30</td><td>15</td><td>4</td><td rowspan="2">6</td>
+                    </tr>
+                    <tr>
+                        <td>Chimie analytique</td><td>15</td><td>15</td><td>15</td><td>2</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">4</td><td rowspan="2">PHY102</td><td rowspan="2">UE4 : Statistique descriptive et Informatique</td><td>Statistique descriptive</td><td>15</td><td>30</td><td>15</td><td>3</td><td rowspan="2">6</td>
+                    </tr>
+                    <tr>
+                        <td>Informatique I</td><td>15</td><td>30</td><td>15</td><td>3</td>
+                    </tr>
+                    <tr>
+                        <td>5</td><td>SPA191</td><td>UE5 : Education à la citoyenneté</td><td>Education à la citoyenneté</td><td>30</td><td>-</td><td>15</td><td>2</td><td>2</td>
+                    </tr>
+                    <tr>
+                        <td>6</td><td>PHY104</td><td>UE6 : Physique et société</td><td>Physique et société</td><td>15</td><td>-</td><td>5</td><td>1</td><td>1</td>
+                    </tr>
+                    <tr class="row-total">
+                        <td colspan="4">Total Semestre 1</td><td>255</td><td>165</td><td>180</td><td>30</td><td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="semester-title">📊 Licence 1 / Semestre 2</div>
+            <table class="program-table">
+                <thead>
+                    <tr>
+                        <th>N°</th><th>Codes</th><th>UE</th><th>EC</th><th>CM</th><th>TP</th><th>TD</th><th>Crédits EC</th><th>Crédits UE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">1</td><td rowspan="2">PHY103</td><td rowspan="2">UE7: Phénomènes oscillatoires</td><td>Ondes mécaniques</td><td>30</td><td>30</td><td>20</td><td>4</td><td rowspan="2">8</td>
+                    </tr>
+                    <tr>
+                        <td>Optique ondulatoire</td><td>30</td><td>30</td><td>20</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">2</td><td rowspan="2">MAT192</td><td rowspan="2">UE8 : Algèbre et Géométrie analytique</td><td>Algèbre</td><td>45</td><td>-</td><td>45</td><td>4</td><td rowspan="2">7</td>
+                    </tr>
+                    <tr>
+                        <td>Géométrie analytique</td><td>30</td><td>-</td><td>30</td><td>3</td>
+                    </tr>
+                    <tr>
+                        <td>3</td><td>MAT193</td><td>UE9 : Logique mathématique</td><td>Logique mathématique</td><td>45</td><td>-</td><td>45</td><td>4</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td>4</td><td>GEO191</td><td>UE10 : Géologie générale</td><td>Géologie générale</td><td>30</td><td>15</td><td>15</td><td>3</td><td>3</td>
+                    </tr>
+                    <tr>
+                        <td>5</td><td>CHI192</td><td>UE11 : Chimie inorganique</td><td>Chimie inorganique</td><td>30</td><td>30</td><td>15</td><td>4</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">6</td><td rowspan="2">COM191</td><td rowspan="2">UE12 : Communication</td><td>Anglais technique</td><td>15</td><td>20</td><td>10</td><td>2</td><td rowspan="2">4</td>
+                    </tr>
+                    <tr>
+                        <td>Expression Orale et Ecrite</td><td>15</td><td>20</td><td>10</td><td>2</td>
+                    </tr>
+                    <tr class="row-total">
+                        <td colspan="4">Total Semestre 2</td><td>285</td><td>130</td><td>215</td><td>30</td><td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- MAQUETTES LICENCE 2 (S3 & S4) -->
+        <div id="l2" class="tab-content">
+            <div class="semester-title">📊 Licence 2 / Semestre 3</div>
+            <table class="program-table">
+                <thead>
+                    <tr>
+                        <th>N°</th><th>Codes</th><th>UE</th><th>EC</th><th>CM</th><th>TP</th><th>TD</th><th>Crédits EC</th><th>Crédits UE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">1</td><td rowspan="2">PHY201</td><td rowspan="2">UE13 : Mécanique des fluides et Thermodynamique</td><td>Mécanique des fluides</td><td>30</td><td>15</td><td>15</td><td>3</td><td rowspan="2">8</td>
+                    </tr>
+                    <tr>
+                        <td>Thermodynamique</td><td>45</td><td>15</td><td>30</td><td>5</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">2</td><td rowspan="2">MAT291</td><td rowspan="2">UE14 : Probabilités et Analyse numérique</td><td>Probabilité et Statistiques</td><td>45</td><td>15</td><td>30</td><td>4</td><td rowspan="2">8</td>
+                    </tr>
+                    <tr>
+                        <td>Analyse Numérique</td><td>45</td><td>15</td><td>30</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td>3</td><td>CHI291</td><td>UE15 : Chimie organique</td><td>Chimie organique</td><td>30</td><td>30</td><td>30</td><td>4</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td>4</td><td>SCV291</td><td>UE16 : Biologie générale</td><td>Biologie générale</td><td>30</td><td>30</td><td>30</td><td>4</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">5</td><td rowspan="2">MAT292</td><td rowspan="2">UE17 : Analyse Infinitésimale 2</td><td>Analyse infinitésimale II</td><td>30</td><td>-</td><td>15</td><td>3</td><td rowspan="2">6</td>
+                    </tr>
+                    <tr>
+                        <td>Analyse vectorielle</td><td>30</td><td>-</td><td>15</td><td>3</td>
+                    </tr>
+                    <tr class="row-total">
+                        <td colspan="4">Total Semestre 3</td><td>300</td><td>150</td><td>195</td><td>30</td><td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="semester-title">📊 Licence 2 / Semestre 4</div>
+            <table class="program-table">
+                <thead>
+                    <tr>
+                        <th>N°</th><th>Codes</th><th>UE</th><th>EC</th><th>CM</th><th>TP</th><th>TD</th><th>Crédits EC</th><th>Crédits UE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">1</td><td rowspan="2">PHY202</td><td rowspan="2">UE18 : Electricité et Magnétisme</td><td>Electricité</td><td>45</td><td>30</td><td>15</td><td>4</td><td rowspan="2">8</td>
+                    </tr>
+                    <tr>
+                        <td>Magnétisme</td><td>45</td><td>30</td><td>15</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">2</td><td rowspan="2">PHY203</td><td rowspan="2">UE19 : Electronique et Informatique I</td><td>Electronique I</td><td>45</td><td>30</td><td>15</td><td>4</td><td rowspan="2">8</td>
+                    </tr>
+                    <tr>
+                        <td>Informatique II</td><td>45</td><td>30</td><td>15</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">3</td><td rowspan="2">PHY204</td><td rowspan="2">UE20 : Mécanique rationnelle et Relativité restreinte</td><td>Relativité restreinte</td><td>30</td><td>-</td><td>30</td><td>3</td><td rowspan="2">6</td>
+                    </tr>
+                    <tr>
+                        <td>Mécanique rationnelle</td><td>30</td><td>-</td><td>30</td><td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td><td>PHI291</td><td>UE21 : Logique</td><td>Logique formelle</td><td>30</td><td>-</td><td>15</td><td>2</td><td>2</td>
+                    </tr>
+                    <tr>
+                        <td>5</td><td>PHY206</td><td>UE22 : Initiation à la recherche scientifique</td><td>IRS</td><td>15</td><td>15</td><td>20</td><td>2</td><td>2</td>
+                    </tr>
+                    <tr>
+                        <td>6</td><td>COM291</td><td>UE23 : Anglais technique II</td><td>Anglais II</td><td>15</td><td>20</td><td>10</td><td>2</td><td>2</td>
+                    </tr>
+                    <tr class="row-total">
+                        <td colspan="4">Total Semestre 4</td><td>300</td><td>170</td><td>180</td><td>30</td><td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- MAQUETTES LICENCE 3 (S5 & S6) -->
+        <div id="l3" class="tab-content">
+            <div class="semester-title">📊 Licence 3 / Semestre 5</div>
+            <table class="program-table">
+                <thead>
+                    <tr>
+                        <th>N°</th><th>Codes</th><th>UE</th><th>EC</th><th>CM</th><th>TP</th><th>TD</th><th>Crédits EC</th><th>Crédits UE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">1</td><td rowspan="2">PHY301</td><td rowspan="2">UE24 : Physique moderne</td><td>Mécanique analytique</td><td>45</td><td>-</td><td>45</td><td>5</td><td rowspan="2">9</td>
+                    </tr>
+                    <tr>
+                        <td>Physique quantique</td><td>45</td><td>-</td><td>30</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">2</td><td rowspan="2">PHY302</td><td rowspan="2">UE25 : Etat solide et Physique nucléaire</td><td>Physique de l'état solide I</td><td>45</td><td>30</td><td>30</td><td>5</td><td rowspan="2">10</td>
+                    </tr>
+                    <tr>
+                        <td>Physique nucléaire I</td><td>45</td><td>30</td><td>30</td><td>5</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">3</td><td rowspan="2">PHY303</td><td rowspan="2">UE26 : Physique Mathématique</td><td>Fonctions spéciales</td><td>30</td><td>-</td><td>30</td><td>3</td><td rowspan="2">6</td>
+                    </tr>
+                    <tr>
+                        <td>Transformées et distributions</td><td>30</td><td>-</td><td>30</td><td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td><td>MAT391</td><td>UE27 : Analyse complexe</td><td>Analyse complexe</td><td>30</td><td>-</td><td>45</td><td>3</td><td>3</td>
+                    </tr>
+                    <tr>
+                        <td>5</td><td>ECO391</td><td>UE28 : Projet Bancable</td><td>Projets bancables</td><td>30</td><td>-</td><td>15</td><td>2</td><td>2</td>
+                    </tr>
+                    <tr class="row-total">
+                        <td colspan="4">Total Semestre 5</td><td>315</td><td>60</td><td>240</td><td>30</td><td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="semester-title">📊 Licence 3 / Semestre 6</div>
+            <table class="program-table">
+                <thead>
+                    <tr>
+                        <th>N°</th><th>Codes</th><th>UE</th><th>EC</th><th>CM</th><th>TP</th><th>TD</th><th>Crédits EC</th><th>Crédits UE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3">1</td><td rowspan="3">PHY304</td><td rowspan="3">UE29 : Astronomie, astrophysique, Electrodynamique et Mécanique statistique</td><td>Astronomie et astrophysique</td><td>30</td><td>15</td><td>30</td><td>4</td><td rowspan="3">10</td>
+                    </tr>
+                    <tr>
+                        <td>Electrodynamique classique</td><td>45</td><td>-</td><td>15</td><td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Mécanique statistique</td><td>45</td><td>-</td><td>15</td><td>3</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">2</td><td rowspan="2">PHY305</td><td rowspan="2">UE30 : Optionnelle</td><td>Cours à choisir dans la liste en annexe</td><td>45</td><td>30</td><td>15</td><td>4</td><td rowspan="2">8</td>
+                    </tr>
+                    <tr>
+                        <td>Cours à choisir dans la liste en annexe</td><td>45</td><td>30</td><td>15</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td>3</td><td>ECO392</td><td>UE31 : Gestion et organisation d’entreprises</td><td>Organisation et Gestion d’entreprises</td><td>15</td><td>-</td><td>30</td><td>2</td><td>2</td>
+                    </tr>
+                    <tr>
+                        <td>4</td><td>PHY311</td><td>UE32 : Stage</td><td>Stage</td><td>15</td><td>-</td><td>100</td><td>5</td><td>5</td>
+                    </tr>
+                    <tr>
+                        <td>5</td><td>PHY306</td><td>UE33 : Projet</td><td>Projet</td><td>15</td><td>-</td><td>100</td><td>5</td><td>5</td>
+                    </tr>
+                    <tr class="row-total">
+                        <td colspan="4">Total Semestre 6</td><td>255</td><td>75</td><td>320</td><td>30</td><td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="semester-title">⚙️ Licence 3 / Semestre 6 : Liste des UE Optionnelles (Au choix)</div>
+            <table class="program-table">
+                <thead>
+                    <tr>
+                        <th>N°</th><th>Codes</th><th>UE (Options disponibles)</th><th>EC Constituants</th><th>CM</th><th>TP</th><th>TD</th><th>Crédits EC</th><th>Crédits UE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">1</td><td rowspan="2">PHY305</td><td rowspan="2">UE30 : Electronique et Informatique II</td><td>Electronique analogique et digitale</td><td>45</td><td>30</td><td>15</td><td>4</td><td rowspan="2">8</td>
+                    </tr>
+                    <tr>
+                        <td>Informatique III (Hardware)</td><td>45</td><td>30</td><td>15</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">2</td><td rowspan="2">PHY305</td><td rowspan="2">UE30 : Programmation et instrumentation</td><td>Programmation orientée objets</td><td>45</td><td>30</td><td>15</td><td>4</td><td rowspan="2">8</td>
+                    </tr>
+                    <tr>
+                        <td>Traitement des signaux et instrumentation</td><td>45</td><td>30</td><td>15</td><td>4</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">3</td><td rowspan="2">MAT392</td><td rowspan="2">UED30 : Complément de Mathématiques</td><td>Géométrie différentielle</td><td>45</td><td>30</td><td>15</td><td>4</td><td rowspan="2">8</td>
+                    </tr>
+                    <tr>
+                        <td>Analyse fonctionnelle</td><td>45</td><td>30</td><td>15</td><td>4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+<!-- -----------------------------------------CONTENUS DES ONGLETS =========================================================--=====================>
+<!-- -----------------------------------------============================================================================================ ======-->
+    <footer>
+        <p>&copy; 2025-2026 - Mention Physique et Technologie</p>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            // Masquer tous les contenus d'onglets
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Désactiver tous les boutons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Afficher l'onglet sélectionné
+            const selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            // Activer le bouton correspondant
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
