@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinshasa Traffic Lab - Debug GPS Live</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- PeerJS -->
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #0e1117;
+            --panel-bg: #1f2937;
+            --text-color: #f3f4f6;
+            --accent-color: #3b82f6;
+            --border-color: #374151;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 10px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+        h1 { color: #60a5fa; margin: 0; font-size: 1.3rem; }
+        .main-container { display: flex; gap: 12px; flex-wrap: wrap; }
+        .sidebar {
+            flex: 1.4; min-width: 310px; background: var(--panel-bg);
+            padding: 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            max-height: 88vh; overflow-y: auto;
+        }
+        .content { flex: 3; min-width: 420px; display: flex; flex-direction: column; gap: 10px; }
+        #map {
+            width: 100%;
+            height: 320px;
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+        }
+        .kpi-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 5px; }
+        .kpi-card {
+            background: var(--panel-bg); padding: 6px; border-radius: 6px;
+            text-align: center; border-left: 4px solid var(--accent-color);
+        }
+        .kpi-card h3 { margin: 0; font-size: 0.65rem; color: #9ca3af; }
+        .kpi-card .value { font-size: 0.8rem; font-weight: bold; color: #ffffff; margin-top: 2px; }
+        .analysis-box {
+            background: var(--panel-bg); padding: 8px; border-radius: 8px;
+            border-left: 4px solid #3b82f6; font-size: 0.75rem;
+        }
+        .debug-panel {
+            background: #111827; border: 1px solid #374151; border-radius: 6px;
+            padding: 8px; margin-top: 8px; font-family: monospace; font-size: 0.7rem; color: #34d399;
+            max-height: 150px; overflow-y: auto;
+        }
+        .form-group { margin-bottom: 6px; }
+        .form-group label { display: block; font-size: 0.7rem; color: #9ca3af; margin-bottom: 2px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 4px; background: #374151; border: 1px solid #4b5563;
+            color: white; border-radius: 4px; box-sizing: border-box; font-size: 0.75rem;
+        }
+        .btn {
+            width: 100%; padding: 7px; background: #3b82f6; border: none; 
+            color: white; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.75rem;
+            margin-top: 4px;
+        }
+        .btn:hover { background: #2563eb; }
+        .mode-badge { display: inline-block; padding: 2px 6px; border-radius: 15px; font-size: 0.65rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Kinshasa Traffic Lab <span id="modeBadge" class="mode-badge" style="background: #374151; color: #fff;">Chargement...</span></h1>
+        <p style="color: #9ca3af; margin: 2px 0 0 0; font-size: 0.7rem;">Mode Débogage & Suivi Live</p>
+    </header>
+
+    <div class="main-container">
+        <!-- PANNEAU DE CONTRÔLE ET DEBUG -->
+        <div class="sidebar">
+            <h2 style="font-size: 0.85rem; margin-top:0;">Configuration</h2>
+            
+            <div style="background: #374151; padding: 8px; border-radius: 6px; margin-bottom: 8px;">
+                <div class="form-group">
+                    <label>Rôle de cet écran :</label>
+                    <select id="userRole" onchange="changerRole()">
+                        <option value="pc">💻 Mon PC (Tableau de bord / Carte)</option>
+                        <option value="conducteur1">🚗 Conducteur 1</option>
+                        <option value="conducteur2">🚙 Conducteur 2</option>
+                        <option value="conducteur3">🚐 Conducteur 3</option>
+                        <option value="conducteur4">🚕 Conducteur 4</option>
+                    </select>
+                </div>
+                
+                <div id="pcConfig" style="margin-top: 5px;">
+                    <label style="font-size:0.68rem; color:#9ca3af;">ID de votre PC (À copier pour le téléphone) :</label>
+                    <input type="text" id="myPeerId" readonly style="text-align:center; font-weight:bold; color:#60a5fa;" value="Génération...">
+                </div>
+                
+                <div id="driverConfig" style="display:none; margin-top: 5px;">
+                    <label style="font-size:0.68rem; color:#9ca3af;">Coller l'ID du PC maître :</label>
+                    <input type="text" id="targetPeerId" placeholder="Coller l'ID du PC ici">
+                    <button class="btn" style="background: #10b981;" onclick="connecterAuPC()">Lancer mon GPS</button>
+                </div>
+            </div>
+
+            <!-- NOUVEAU : Console de Debug en direct sur l'écran -->
+            <h2 style="font-size: 0.85rem; margin-bottom: 4px;">📡 Appareils Connectés & Coordonnées :</h2>
+            <div class="debug-panel" id="debugLog">
+                En attente de connexion...<br>
+            </div>
+        </div>
+
+        <!-- CARTE ET RÉSULTATS -->
+        <div class="content">
+            <div class="kpi-container">
+                <div class="kpi-card"><h3>XA</h3><div class="value" id="kpi_XA">4</div></div>
+                <div class="kpi-card"><h3>Flux Y</h3><div class="value" id="kpi_Y">45</div></div>
+                <div class="kpi-card" id="card_status" style="border-left-color: #10b981;">
+                    <h3>T_ΔK Score</h3><div class="value" id="kpi_tk_score">0%</div>
+                </div>
+            </div>
+
+            <div id="map"></div>
+
+            <div class="analysis-box" id="analysisBox">
+                <strong>Statut :</strong> <span id="liveStatusText">Prêt. Ouvrez la page sur le téléphone et connectez-vous.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([-4.412, 15.310], 13);
+
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Esri'
+        }).addTo(map);
+
+        // Tracés
+        const coordsTroncon1 = [
+            [-4.422, 15.316], [-4.4213, 15.3102], [-4.4187, 15.3118], [-4.4163, 15.3135],
+            [-4.4145, 15.315], [-4.4126, 15.3157], [-4.4108, 15.3162], [-4.4085, 15.3162],
+            [-4.4066, 15.3162], [-4.4045, 15.3162], [-4.4013, 15.3162], [-4.3983, 15.3162],
+            [-4.3961, 15.316], [-4.3938, 15.3155], [-4.3912, 15.3148], [-4.3898, 15.3147]
+        ];
+        L.polyline(coordsTroncon1, { color: '#2563eb', weight: 4 }).addTo(map);
+
+        let conducteurCouleurs = {
+            'conducteur1': '#10b981',
+            'conducteur2': '#3b82f6',
+            'conducteur3': '#f59e0b',
+            'conducteur4': '#ef4444'
+        };
+
+        let conducteurMarkers = {};
+        let peer = null;
+        let debugLogElement = document.getElementById('debugLog');
+
+        function logDebug(message) {
+            let time = new Date().toLocaleTimeString();
+            debugLogElement.innerHTML += `[${time}] ${message}<br>`;
+            debugLogElement.scrollTop = debugLogElement.scrollHeight; // Auto-scroll vers le bas
+        }
+
+        function initialiserPeer() {
+            peer = new Peer();
+            peer.on('open', (id) => {
+                document.getElementById('myPeerId').value = id;
+                document.getElementById('modeBadge').innerText = "Mode PC (Maître)";
+                document.getElementById('modeBadge').style.background = "#2563eb";
+                logDebug("Serveur PeerJS démarré. ID du PC : " + id);
+            });
+
+            peer.on('connection', (conn) => {
+                logDebug("🔗 Un téléphone vient de se connecter au réseau !");
+                
+                conn.on('data', (data) => {
+                    if (data && data.lat && data.lng && data.driverId) {
+                        let dId = data.driverId;
+                        
+                        // Afficher les coordonnées reçues en direct dans le panneau de gauche
+                        logDebug(`📍 ${dId} ➔ Lat: ${data.lat.toFixed(5)}, Lng: ${data.lng.toFixed(5)}`);
+
+                        // Créer ou déplacer le point sur la carte
+                        if (!conducteurMarkers[dId]) {
+                            let couleur = conducteurCouleurs[dId] || '#ffffff';
+                            conducteurMarkers[dId] = L.circleMarker([data.lat, data.lng], {
+                                radius: 9, fillColor: couleur, color: '#fff', weight: 2, fillOpacity: 1
+                            }).addTo(map).bindPopup(dId.toUpperCase());
+                            
+                            // Centrer automatiquement la carte sur le premier point reçu
+                            map.setView([data.lat, data.lng], 14);
+                        } else {
+                            conducteurMarkers[dId].setLatLng([data.lat, data.lng]);
+                        }
+                    }
+                });
+            });
+        }
+
+        function changerRole() {
+            let role = document.getElementById('userRole').value;
+            if (role === 'pc') {
+                document.getElementById('pcConfig').style.display = 'block';
+                document.getElementById('driverConfig').style.display = 'none';
+                if(!peer) initialiserPeer();
+            } else {
+                document.getElementById('pcConfig').style.display = 'none';
+                document.getElementById('driverConfig').style.display = 'block';
+                document.getElementById('modeBadge').innerText = "Mode Téléphone (" + role + ")";
+                document.getElementById('modeBadge').style.background = "#10b981";
+            }
+        }
+
+        function connecterAuPC() {
+            let targetId = document.getElementById('targetPeerId').value.trim();
+            let driverId = document.getElementById('userRole').value;
+            if(!targetId) { alert("Veuillez entrer l'ID du PC !"); return; }
+
+            peer = new Peer();
+            peer.on('open', () => {
+                let conn = peer.connect(targetId);
+                conn.on('open', () => {
+                    alert("Connecté au PC avec succès !");
+                    
+                    // Lancer la géolocalisation continue
+                    if (navigator.geolocation) {
+                        navigator.geolocation.watchPosition((position) => {
+                            let lat = position.coords.latitude;
+                            let lng = position.coords.longitude;
+                            
+                            // Envoyer au PC
+                            conn.send({ driverId: driverId, lat: lat, lng: lng });
+                        }, (err) => {
+                            alert("Erreur GPS du téléphone : " + err.message);
+                        }, { enableHighAccuracy: true });
+                    } else {
+                        alert("La géolocalisation n'est pas supportée.");
+                    }
+                });
+            });
+        }
+
+        initialiserPeer();
+    </script>
+</body>
+</html>
